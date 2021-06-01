@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org">
+<head>
+<!-- Required meta tags -->
+<meta charset="utf-8">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link rel="icon" href="img/logoIco.ico">
+<!-- Bootstrap CSS -->
+<link rel="stylesheet"
+	href="/webjars/bootstrap/4.6.0/css/bootstrap.min.css">
+<!-- My CSS -->
+<link rel="stylesheet" href="/css/style.css">
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<title>Empresaurios</title>
+</head>
+<body>
+
+	<div id="header" th:fragment="head">
+		<header>
+			<div th:insert="layouts/menu :: menu"></div>
+			<div style="background: url(/img/banner.jpg) no-repeat ;background-size:cover; ">
+			<div class="jumbotron m-0 text-light" style="background:rgba(1,1,1,0.6);" >
+				<h1 class="display-4">Bienvenidos a Empresaurios!</h1>
+				<p class="lead">Empresa encargada de desarrollo web </p>
+				<hr class="my-4">
+				<p>Matute es un manco en dota en lol en pubg en the forest en smite en csgo en paladins en neverwinter en deadside.</p>
+				<a class="btn btn-info btn-lg" href="#" role="button">Leer mas</a>
+					
+			</div>
+			</div>
+		</header>
+	</div>
+
+
+	<!-- JavaScript  Jquery Popper and Bootstrap JS -->
+	<script src="/webjars/jquery/3.5.1/jquery.slim.min.js"></script>
+	<script src="/webjars/popper.js/1.16.1/dist/popper.min.js"></script>
+	<script src="/webjars/bootstrap/4.6.0/js/bootstrap.min.css"></script>
+
+</body>
+</html>
