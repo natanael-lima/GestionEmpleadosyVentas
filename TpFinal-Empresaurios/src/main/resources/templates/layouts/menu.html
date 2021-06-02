@@ -1,35 +1,48 @@
 <!DOCTYPE html>
 <html xmlns:th="http://thymeleaf.org">
 <head>
-<!-- Required meta tags -->
+    <!-- Required meta tags -->
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<link rel="icon" href="img/logoIco.ico">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link rel="icon" href="img/dinow.ico">
 <!-- Bootstrap CSS -->
-<link rel="stylesheet" href="/webjars/bootstrap/4.6.0/css/bootstrap.min.css">
+<link rel="stylesheet"
+	href="/webjars/bootstrap/4.6.0/css/bootstrap.min.css">
 <!-- My CSS -->
 <link rel="stylesheet" href="/css/style.css">
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 
-<title>Empresaurios</title>
+    
+    <title>Empresaurios</title>
 </head>
 <body>
 
 	<div id="menu" th:fragment="menu">
-		<nav class="nav bg-dark p-2">
-		<img src="/img/dinoW.png" width="30" height="30" alt="">
-			<a class="nav-link text-light" href="#">Home</a> 
-			<a class="nav-link text-light" href="#">Comprar</a> 
-			<a class="nav-link text-light" href="#">Registrar</a> 
-			<a class="nav-link text-light" href="#">Donar</a>
-		</nav>
 
+		<nav class="navbar navbar-expand-lg navbar-light bg-info">
+			<img src="/img/dinoW.png" width="30" height="30" alt="">
+			<button class="navbar-toggler bg-light" type="button" data-toggle="collapse"
+				data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup"
+				aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+				<div class="navbar-nav">
+					<a class="nav-link active text-light" href="/index"> Inicio </a>
+					<a class="nav-link text-light" href="#">Comprar</a> 
+					<a class="nav-link text-light" href="#">Registrar</a>
+					<a class="nav-link disabled text-light " href="#" tabindex="-1" aria-disabled="true">Donar</a>
+				</div>
+			</div>
+		</nav>
 	</div>
 
-	<!-- JavaScript  Jquery Popper and Bootstrap JS -->
+   <!-- JavaScript  Jquery Popper and Bootstrap JS -->
 	<script src="/webjars/jquery/3.5.1/jquery.slim.min.js"></script>
 	<script src="/webjars/popper.js/1.16.1/dist/popper.min.js"></script>
-	<script src="/webjars/bootstrap/4.6.0/js/bootstrap.min.css"></script>
+	<script src="/webjars/bootstrap/4.6.0/js/bootstrap.min.js"></script>
 
 </body>
 </html>

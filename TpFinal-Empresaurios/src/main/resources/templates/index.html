@@ -3,8 +3,9 @@
 <head>
 <!-- Required meta tags -->
 <meta charset="utf-8">
-<meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1">
-<link rel="icon" href="img/dn.ico">
+<meta name="viewport"
+	content="user-scalable=no, width=device-width, initial-scale=1">
+<link rel="icon" href="img/dinow.ico">
 <!-- Bootstrap CSS -->
 <link rel="stylesheet"
 	href="/webjars/bootstrap/4.6.0/css/bootstrap.min.css">
@@ -13,17 +14,16 @@
 <title>Empresaurios</title>
 </head>
 <body>
-	<!--     Inicio Head -->
+	<!--     Inicio Header -->
 	<div th:insert="layouts/head :: head"></div>
-	<!--    Fin Head -->
+	<!--    Fin Header -->
 
-	<!--    Inicio Body -->
+	<!--    Inicio Contendeor 1 -->
 	<div class="contenedor">
 		<div class="row m-0">
-			<!--    Inicio Section -->
+			<!--    Inicio Section Tablas -->
 			<div class="col-12 col-sm-12 col-md-9 col-lg-9 bg-light p-3">
-
-				<div class="row">
+				<div class="row p-4">
 					<div class="col-12 col-md-6">
 						<div class="card">
 							<div class="card-body">
@@ -46,7 +46,7 @@
 					</div>
 				</div>
 
-				<div class="row">
+				<div class="row p-4">
 					<div class="col-12 col-md-6">
 						<div class="card">
 							<div class="card-body">
@@ -69,7 +69,7 @@
 					</div>
 				</div>
 
-				<div class="row">
+				<div class="row p-4">
 					<div class="col-12 col-md-6">
 						<div class="card">
 							<div class="card-body">
@@ -93,42 +93,39 @@
 				</div>
 
 			</div>
-			<!--    Fin Section -->
+			<!--    Fin Section Tablas -->
 
 			<!--    Inicio Publicidad -->
-			<div class="col-md-3 bg-light p-3 flex-column justify-content-center d-none d-md-block">
-
-				<div class="card-deck">
-					<div class="card">
-						<img src="../img/publi.png" class="card-img-top" alt="...">
-						<div class="card-body">
-							<h5 class="card-title">Gana un Iphone 12 pro max</h5>
-							<p class="card-text">This is a longer card with supporting
-								text below as a natural lead-in to additional content. This
-								content is a little bit longer.</p>
-							<p class="card-text">
-								<small class="text-muted">Last updated 3 mins ago</small>
-							</p>
-						</div>
-					</div>
-				</div>
-
+			<div
+				class="col-md-3 bg-light p-5 flex-column justify-content-center d-none d-md-block">
+				<div th:insert="layouts/publicidad :: publi"></div>
 			</div>
 			<!--    Fin Publicidad -->
 
-
 		</div>
 
+
 	</div>
-	<!--    Fin Body -->
+	<!--    Fin Contenedor 1 -->
 
+	<!--    Inicio Contendeor 2 -->
 
+	<div class="card text-center">
+		<div class="card-header">Grupo Empresaurios</div>
+		<div class="card-body">
+			<h5 class="card-title">Alumnos</h5>
+			<p class="card-text"> Desarrollo de pagina web realizado por Gaitan Maximiliano - Lima Natanael - Virreyra Raquel - Loto Mateo.</p>
+			<a href="#" class="btn btn-info">Ver grupo</a>
+		</div>
+		<div class="card-footer text-muted">Programacion Visual 2021</div>
+	</div>
 
+	<!--  Footer -->
 	<div th:insert="layouts/footer :: foot"></div>
 
 	<!-- JavaScript  Jquery Popper and Bootstrap JS -->
 	<script src="/webjars/jquery/3.5.1/jquery.slim.min.js"></script>
 	<script src="/webjars/popper.js/1.16.1/dist/popper.min.js"></script>
-	<script src="/webjars/bootstrap/4.6.0/js/bootstrap.min.css"></script>
+	<script src="/webjars/bootstrap/4.6.0/js/bootstrap.min.js"></script>
 </body>
 </html>
