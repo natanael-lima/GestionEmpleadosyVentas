@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org">
+<head>
+<!-- Required meta tags -->
+<meta charset="utf-8">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link rel="icon" href="img/dinow.ico">
+<!-- Bootstrap CSS -->
+<link rel="stylesheet"
+	href="/webjars/bootstrap/4.6.0/css/bootstrap.min.css">
+<!-- My CSS -->
+<link rel="stylesheet" href="/css/style.css">
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<title>Empresaurios</title>
+</head>
+<body>
+
+	<div id="menu" th:fragment="publi">
+
+		<div class="card" style="width: 18rem;">
+			<!-- Inicio Carousel -->
+			<div id="carouselExampleInterval" class="carousel slide" data-ride="carousel">
+				<div class="carousel-inner">
+					<div class="carousel-item active" data-interval="1500">
+						<img src="../img/p1.jpg" class="d-block w-100" alt="...">
+					</div>
+					<div class="carousel-item" data-interval="1500">
+						<img src="../img/p2.jpg" class="d-block w-100" alt="...">
+					</div>
+					<div class="carousel-item" data-interval="1500">
+						<img src="../img/p3.jpg" class="d-block w-100" alt="...">
+					</div>
+					<div class="carousel-item" data-interval="1500">
+						<img src="../img/p4.jpg" class="d-block w-100" alt="...">
+					</div>
+				</div>
+				<a class="carousel-control-prev" href="#carouselExampleInterval"
+					role="button" data-slide="prev"> <span
+					class="carousel-control-prev-icon" aria-hidden="true"></span> <span
+					class="sr-only">Previous</span>
+				</a> <a class="carousel-control-next" href="#carouselExampleInterval"
+					role="button" data-slide="next"> <span
+					class="carousel-control-next-icon" aria-hidden="true"></span> <span
+					class="sr-only">Next</span>
+				</a>
+			</div>
+			<!-- Fin Carousel -->
+			
+			<div class="card-body">
+				<h5 class="card-title">Ganaste un Iphone 11 PRO MAX</h5>
+				<p class="card-text">Some quick example text to build on the
+					card title and make up the bulk of the card's content.</p>
+			</div>
+			<ul class="list-group list-group-flush">
+				<li class="list-group-item">Para Argetina</li>
+				<li class="list-group-item">Para Peru</li>
+				<li class="list-group-item">Para Brazil</li>
+			</ul>
+			<div class="card-body">
+				<a href="#" class="card-link">Ver Premio</a> <a href="#"
+					class="card-link">Ver Pagina</a>
+			</div>
+		</div>
+
+	</div>
+
+	<!-- JavaScript  Jquery Popper and Bootstrap JS -->
+	<script src="/webjars/jquery/3.5.1/jquery.slim.min.js"></script>
+	<script src="/webjars/popper.js/1.16.1/dist/popper.min.js"></script>
+	<script src="/webjars/bootstrap/4.6.0/js/bootstrap.min.js"></script>
+
+</body>
+</html>

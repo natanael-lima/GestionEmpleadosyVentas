@@ -1,10 +1,131 @@
 <!DOCTYPE html>
-<html>
-	<head>
-		<meta charset="ISO-8859-1">
-		<title>Inicio</title>
-	</head>
-	<body>
-		<h1>Hola TP FINAL</h1>
-	</body>
+<html xmlns:th="http://thymeleaf.org">
+<head>
+<!-- Required meta tags -->
+<meta charset="utf-8">
+<meta name="viewport"
+	content="user-scalable=no, width=device-width, initial-scale=1">
+<link rel="icon" href="img/dinow.ico">
+<!-- Bootstrap CSS -->
+<link rel="stylesheet"
+	href="/webjars/bootstrap/4.6.0/css/bootstrap.min.css">
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<title>Empresaurios</title>
+</head>
+<body>
+	<!--     Inicio Header -->
+	<div th:insert="layouts/head :: head"></div>
+	<!--    Fin Header -->
+
+	<!--    Inicio Contendeor 1 -->
+	<div class="contenedor">
+		<div class="row m-0">
+			<!--    Inicio Section Tablas -->
+			<div class="col-12 col-sm-12 col-md-9 col-lg-9 bg-light p-3">
+				<div class="row p-4">
+					<div class="col-12 col-md-6">
+						<div class="card">
+							<div class="card-body">
+								<h5 class="card-title">Special title treatment</h5>
+								<p class="card-text">With supporting text below as a natural
+									lead-in to additional content.</p>
+								<a href="#" class="btn btn-info">Go somewhere</a>
+							</div>
+						</div>
+					</div>
+					<div class="col-12 col-md-6">
+						<div class="card">
+							<div class="card-body">
+								<h5 class="card-title">Special title treatment</h5>
+								<p class="card-text">With supporting text below as a natural
+									lead-in to additional content.</p>
+								<a href="#" class="btn btn-info">Go somewhere</a>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="row p-4">
+					<div class="col-12 col-md-6">
+						<div class="card">
+							<div class="card-body">
+								<h5 class="card-title">Special title treatment</h5>
+								<p class="card-text">With supporting text below as a natural
+									lead-in to additional content.</p>
+								<a href="#" class="btn btn-info">Go somewhere</a>
+							</div>
+						</div>
+					</div>
+					<div class="col-12 col-md-6">
+						<div class="card">
+							<div class="card-body">
+								<h5 class="card-title">Special title treatment</h5>
+								<p class="card-text">With supporting text below as a natural
+									lead-in to additional content.</p>
+								<a href="#" class="btn btn-info">Go somewhere</a>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="row p-4">
+					<div class="col-12 col-md-6">
+						<div class="card">
+							<div class="card-body">
+								<h5 class="card-title">Special title treatment</h5>
+								<p class="card-text">With supporting text below as a natural
+									lead-in to additional content.</p>
+								<a href="#" class="btn btn-info">Go somewhere</a>
+							</div>
+						</div>
+					</div>
+					<div class="col-12 col-md-6">
+						<div class="card">
+							<div class="card-body">
+								<h5 class="card-title">Special title treatment</h5>
+								<p class="card-text">With supporting text below as a natural
+									lead-in to additional content.</p>
+								<a href="#" class="btn btn-info">Go somewhere</a>
+							</div>
+						</div>
+					</div>
+				</div>
+
+			</div>
+			<!--    Fin Section Tablas -->
+
+			<!--    Inicio Publicidad -->
+			<div
+				class="col-md-3 bg-light p-5 flex-column justify-content-center d-none d-md-block">
+				<div th:insert="layouts/publicidad :: publi"></div>
+			</div>
+			<!--    Fin Publicidad -->
+
+		</div>
+
+
+	</div>
+	<!--    Fin Contenedor 1 -->
+
+	<!--    Inicio Contendeor 2 -->
+
+	<div class="card text-center">
+		<div class="card-header">Grupo Empresaurios</div>
+		<div class="card-body">
+			<h5 class="card-title">Alumnos</h5>
+			<p class="card-text"> Desarrollo de pagina web realizado por Gaitan Maximiliano - Lima Natanael - Virreyra Raquel - Loto Mateo.</p>
+			<a href="#" class="btn btn-info">Ver grupo</a>
+		</div>
+		<div class="card-footer text-muted">Programacion Visual 2021</div>
+	</div>
+
+	<!--  Footer -->
+	<div th:insert="layouts/footer :: foot"></div>
+
+	<!-- JavaScript  Jquery Popper and Bootstrap JS -->
+	<script src="/webjars/jquery/3.5.1/jquery.slim.min.js"></script>
+	<script src="/webjars/popper.js/1.16.1/dist/popper.min.js"></script>
+	<script src="/webjars/bootstrap/4.6.0/js/bootstrap.min.js"></script>
+</body>
 </html>
