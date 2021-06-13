@@ -21,7 +21,7 @@
 
 	<div id="menu" th:fragment="menu">
 
-		<nav class="navbar navbar-expand-lg navbar-light bg-info">
+		<nav style="background: #000;" class="navbar navbar-expand-lg navbar-light p-3" >
 			<img src="/img/dinoW.png" width="30" height="30" alt="">
 			<button class="navbar-toggler bg-light" type="button" data-toggle="collapse"
 				data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup"
@@ -30,10 +30,11 @@
 			</button>
 			<div class="collapse navbar-collapse" id="navbarNavAltMarkup">
 				<div class="navbar-nav">
-					<a class="nav-link active text-light" href="/index"> Inicio </a>
-					<a class="nav-link text-light" href="#">Comprar</a> 
-					<a class="nav-link text-light" href="#">Registrar</a>
-					<a class="nav-link disabled text-light " href="#" tabindex="-1" aria-disabled="true">Donar</a>
+					<a class="nav-link active text-light ml-3" href="/index"> Inicio </a>
+					<a class="nav-link text-light ml-3" href="../form-orden">Comprar</a> 
+					<a class="nav-link text-light ml-3" href="/form-cliente">Registrar Cliente</a>
+					<a class="nav-link text-light ml-3" href="/form-empleado">Registrar Empleado</a>
+<!-- 					<a class="nav-link text-light " href="#">Iniciar Sesion</a> -->
 				</div>
 			</div>
 		</nav>
