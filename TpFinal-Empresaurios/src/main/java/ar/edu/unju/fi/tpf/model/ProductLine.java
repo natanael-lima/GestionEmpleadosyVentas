@@ -24,7 +24,8 @@ public class ProductLine {
 	@Column(name="prodL_htmldescription")
 	private String htmlDescription;
 	
-	//imagen?
+	@Column(name="prodL_image")
+	private byte[] image; //?
 	
 	//Relacion producto a linea de producto - muchos a uno
 	@OneToMany(mappedBy = "productLine")

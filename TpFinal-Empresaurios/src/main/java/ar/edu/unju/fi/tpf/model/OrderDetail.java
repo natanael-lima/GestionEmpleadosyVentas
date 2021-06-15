@@ -1,6 +1,9 @@
 package ar.edu.unju.fi.tpf.model;
 
+import java.io.Serializable;
+
 import javax.persistence.Column;
+import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 
@@ -9,9 +12,15 @@ import org.springframework.stereotype.Component;
 @Component
 @Entity
 @Table(name="ORDERDETAILS")
-public class OrderDetail {
-	private long orderNumber;
-	private long productCode;
+public class OrderDetail implements Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	
+	@EmbeddedId
+	@Column(name= "ordD_id")
+	private OrderDetailId orderId;
 	
 	@Column(name="ordD_quantity")
 	private int quantityOrdered;
@@ -31,20 +40,18 @@ public class OrderDetail {
 		// TODO Auto-generated constructor stub
 	}
 	
-	public long getOrderNumber() {
-		return orderNumber;
+	public OrderDetailId getOrderId() {
+		return orderId;
 	}
-	public void setOrderNumber(long orderNumber) {
-		this.orderNumber = orderNumber;
+
+
+
+	public void setOrderId(OrderDetailId orderId) {
+		this.orderId = orderId;
 	}
-	
-	public long getProductCode() {
-		return productCode;
-	}
-	public void setProductCode(long productCode) {
-		this.productCode = productCode;
-	}
-	
+
+
+
 	public long getQuantityOrdered() {
 		return quantityOrdered;
 	}
