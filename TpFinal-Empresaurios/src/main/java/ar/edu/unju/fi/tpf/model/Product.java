@@ -3,6 +3,8 @@ package ar.edu.unju.fi.tpf.model;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -15,8 +17,9 @@ import org.springframework.stereotype.Component;
 @Entity
 public class Product {
 	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name="prod_code") 
-	private String productCode; 
+	private Long productCode; 
 	
 	@Column(name="prod_name")
 	private String productName;
@@ -40,22 +43,17 @@ public class Product {
 	
 	@Column(name="prod_price")
 	private double buyPrice;
-
-	
-	
-	
 	
 	
 	public Product() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
-	public String getProductCode() {
+	public Long getProductCode() {
 		return productCode;
 	}
 
-	public void setProductCode(String productCode) {
+	public void setProductCode(Long productCode) {
 		this.productCode = productCode;
 	}
 
@@ -114,6 +112,14 @@ public class Product {
 	public void setBuyPrice(double buyPrice) {
 		this.buyPrice = buyPrice;
 	}
+
+	@Override
+	public String toString() {
+		return "Product [productCode=" + productCode + ", productName=" + productName + ", productLine=" + productLine
+				+ ", productScale=" + productScale + ", productVendor=" + productVendor + ", productDescription="
+				+ productDescription + ", quantityInStock=" + quantityInStock + ", buyPrice=" + buyPrice + "]";
+	}
+	
 	
 	
 }
