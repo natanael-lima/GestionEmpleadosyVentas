@@ -1,21 +1,18 @@
 <!DOCTYPE html>
 <html xmlns:th="http://thymeleaf.org">
-<head>
-<!-- Required meta tags -->
-<meta charset="utf-8">
-<meta name="viewport"
-	content="user-scalable=no, width=device-width, initial-scale=1">
-<link rel="icon" href="img/dinow.ico">
-<!-- Bootstrap CSS -->
-<link rel="stylesheet"
-	href="/webjars/bootstrap/4.6.0/css/bootstrap.min.css">
-<link rel="stylesheet"
-	href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-<title>Empresaurios</title>
-</head>
+	<head>
+		<!-- Required meta tags -->
+		<meta charset="utf-8">
+		<meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1">
+		<link rel="icon" href="img/dinow.ico">
+		<!-- Bootstrap CSS -->
+		<link rel="stylesheet" href="/webjars/bootstrap/4.6.0/css/bootstrap.min.css">
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+		<title>Empresaurios</title>
+	</head>
 <body>
 	<!--     Inicio Header -->
-	<div th:insert="layouts/head :: head"></div>
+	<div th:insert="layouts/header :: header"></div>
 	<!--    Fin Header -->
 
 	<!--    Inicio Contendeor 1 -->
@@ -30,7 +27,7 @@
 								<h5 class="card-title">Tabla Productos</h5>
 								<p class="card-text">Tabla que muestra los productos que se
 									ingresaron.</p>
-								<a style="background: #178C71;" href="#" class="btn text-light">Ver
+								<a style="background: #178C71;" href="/tablaprod" class="btn text-light">Ver
 									Tabla</a>
 							</div>
 						</div>

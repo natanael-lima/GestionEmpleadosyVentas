@@ -1,5 +1,6 @@
 package ar.edu.unju.fi.tpf.model;
 
+import java.util.Arrays;
 import java.util.List;
 
 import javax.persistence.Column;
@@ -15,8 +16,8 @@ import org.springframework.stereotype.Component;
 @Entity
 public class ProductLine {
 	@Id
-	@Column(name="prodL_productline")
-	private String productLine;
+	@Column(name="prodL_productlineId")
+	private Long productLineId;
 	
 	@Column(name="prodL_textdescription")
 	private String textDescription;
@@ -27,12 +28,9 @@ public class ProductLine {
 	@Column(name="prodL_image")
 	private byte[] image; //?
 	
-	//Relacion producto a linea de producto - muchos a uno
+	//Relacion producto a linea de producto - uno a muchos
 	@OneToMany(mappedBy = "productLine")
 	private List<Product> product;
-
-	
-	
 	
 	
 	
@@ -41,12 +39,12 @@ public class ProductLine {
 		// TODO Auto-generated constructor stub
 	}
 
-	public String getProductLine() {
-		return productLine;
+	public Long getProductLineId() {
+		return productLineId;
 	}
 
-	public void setProductLine(String productLine) {
-		this.productLine = productLine;
+	public void setProductLine(Long productLineId) {
+		this.productLineId = productLineId;
 	}
 
 	public String getTextDescription() {
@@ -72,6 +70,27 @@ public class ProductLine {
 	public void setProduct(List<Product> product) {
 		this.product = product;
 	}
+	
+
+	public byte[] getImage() {
+		return image;
+	}
+
+	public void setImage(byte[] image) {
+		this.image = image;
+	}
+
+	public void setProductLineId(Long productLineId) {
+		this.productLineId = productLineId;
+	}
+
+	@Override
+	public String toString() {
+		return "ProductLine [productLineId=" + productLineId + ", textDescription=" + textDescription
+				+ ", htmlDescription=" + htmlDescription + ", image=" + Arrays.toString(image) + ", product=" + product
+				+ "]";
+	}
+	
 	
 	
 }

@@ -1,24 +1,22 @@
 <!DOCTYPE html>
 <html xmlns:th="http://thymeleaf.org">
-<head>
-<!-- Required meta tags -->
-<meta charset="utf-8">
-<meta name="viewport"
-	content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<link rel="icon" href="img/dinow.ico">
-<!-- Bootstrap CSS -->
-<link rel="stylesheet"
-	href="/webjars/bootstrap/4.6.0/css/bootstrap.min.css">
-<!-- My CSS -->
-<link rel="stylesheet" href="/css/style.css">
-<link rel="stylesheet"
-	href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-
-<title>Empresaurios</title>
-</head>
+	<head>
+		<!-- Required meta tags -->
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+		<link rel="icon" href="img/dinow.ico">
+		
+		<!-- Bootstrap CSS -->
+		<link rel="stylesheet" href="/webjars/bootstrap/4.6.0/css/bootstrap.min.css">
+		
+		<!-- My CSS -->
+		<link rel="stylesheet" href="/css/style.css">
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+		<title>Empresaurios</title>
+	</head>
 <body>
 
-	<div id="header" th:fragment="head">
+	<div id="header" th:fragment="header">
 		<header>
 			<div th:insert="layouts/menu :: menu"></div>
 			<div style="background: url(/img/banner.jpg) no-repeat ;background-size:cover; ">
