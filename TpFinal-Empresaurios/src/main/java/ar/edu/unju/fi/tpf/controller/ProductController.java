@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import ar.edu.unju.fi.tpf.model.Product;
+import ar.edu.unju.fi.tpf.model.ProductLine;
 import ar.edu.unju.fi.tpf.service.IProductLineService;
 import ar.edu.unju.fi.tpf.service.IProductService;
 
@@ -28,12 +29,14 @@ public class ProductController {
 	public String getFormProd(Model model) {
 		model.addAttribute(product);
 		model.addAttribute("productLines", prodLineService.obtenerProductLines());
-		System.out.println(prodLineService.obtenerProductLines());
 		return "form-producto";
 	}
 	
 	@GetMapping("/tablaprod")
-	public String getTablaprod() {
+	public String getTablaprod(Model model) {
+		
+		model.addAttribute("productos", prodService.obtenerProducts());
+		
 		return "tablaProduct";
 	}
 	
@@ -42,6 +45,10 @@ public class ProductController {
 		
 			ModelAndView model;
 			
+			
+			ProductLine prodLine = prodLineService.buscarProduct(product.getProductLine().getProductLineId());
+			product.setProductLine(prodLine);
+			 
 			prodService.guardarProduct(product);
 			model= new ModelAndView("tablaProduct");
 			model.addObject("productos", prodService.obtenerProducts());

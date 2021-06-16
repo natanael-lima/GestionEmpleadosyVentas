@@ -70,6 +70,19 @@ public class ProductLine {
 	public void setProduct(List<Product> product) {
 		this.product = product;
 	}
+	
+
+	public byte[] getImage() {
+		return image;
+	}
+
+	public void setImage(byte[] image) {
+		this.image = image;
+	}
+
+	public void setProductLineId(Long productLineId) {
+		this.productLineId = productLineId;
+	}
 
 	@Override
 	public String toString() {

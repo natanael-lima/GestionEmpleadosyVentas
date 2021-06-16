@@ -112,6 +112,7 @@ public class Product {
 	public void setBuyPrice(double buyPrice) {
 		this.buyPrice = buyPrice;
 	}
+	
 
 	@Override
 	public String toString() {
