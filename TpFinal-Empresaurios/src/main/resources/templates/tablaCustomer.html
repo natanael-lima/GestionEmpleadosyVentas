@@ -29,7 +29,7 @@
 		 		
 				  <thead>
 				    <tr>
-				    
+				       <th scope="col">#</th>
 				       <th scope="col">customerName</th>
 		               <th scope="col">phone</th>
 		               <th scope="col">addressLine</th>
@@ -43,6 +43,7 @@
 				  </thead>
 				  <tbody>
 				    <tr th:each="cli : ${clientes}">
+				      <td th:text="${cli.customerNumber}"></td>
 				      <td th:text="${cli.customerName}"></td>
 		              <td th:text="${cli.phone}"></td>
 		              <td th:text="${cli.addressLine}"></td>
@@ -52,13 +53,13 @@
 		              <td th:text="${cli.country}"></td>
 		              <td th:text="${cli.creditLimit}"></td>
 		
-		               <!-- <td><a th:href="@{/form/eliminar/}+${prod.productCode}" class="btn btn-light my-2">Editar</a></td>
-		               <td><a th:href="@{/form/modificar/}+${prod.productCode}" class="btn btn-light my-2">Eliminar</a></td>  -->
+		               <td><a th:href="@{/form/modificarCustomer/}+${cli.customerNumber}" class="btn btn-info text-light my-2">Editar</a></td>
+		               <td><a th:href="@{/form/eliminarCustomer/}+${cli.customerNumber}" class="btn btn-danger text-light my-2">Eliminar</a></td>
 				    </tr>
 				  
 				  </tbody>
 				</table>
-		 </div>	
+		   </div>	
 
 			</div>
 		</div>

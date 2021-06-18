@@ -27,46 +27,54 @@
 			
 				<form th:action="@{/form/savecustomer}" th:object="${customer}" method="post">
 					
-					<!-- <input type="hidden" th:field="*{productCode}"> --> 
+                   <input type="hidden" th:field="*{customerNumber}">
 				
 					<div class="mb-3">
-						<label for="customerName" class="form-label">Nombre del Cliente</label>
+						<label for="customerName" class="form-label">name del Cliente</label>
 						<input type="text" class="form-control" id="customerName" th:field="*{customerName}">
+						 <small class="form-text text-danger" th:if="${#fields.hasErrors('customerName')}" th:errors="*{customerName}"></small>
 					</div>
 					
 					<div class="mb-3">
 						<label for="phone" class="form-label">phone</label>
 						<input type="number" class="form-control" id="phone" th:field="*{phone}">
+						 <small class="form-text text-danger" th:if="${#fields.hasErrors('phone')}" th:errors="*{phone}"></small>
 					</div>
 					
 					<div class="mb-3">
 						<label for="addressLine" class="form-label">addressLine</label>
 						<input type="text" class="form-control" id="addressLine" th:field="*{addressLine}">
+						 <small class="form-text text-danger" th:if="${#fields.hasErrors('addressLine')}" th:errors="*{addressLine}"></small>
 					</div>
 					
 					<div class="mb-3">
 						<label for="city" class="form-label">city</label>
 						<input type="text" class="form-control" id="city" th:field="*{city}">
+						 <small class="form-text text-danger" th:if="${#fields.hasErrors('city')}" th:errors="*{city}"></small>
 					</div>
 					
 					<div class="mb-3">
 						<label for="state" class="form-label">state</label>
 						<input type="text" class="form-control" id="state" th:field="*{state}">
+						 <small class="form-text text-danger" th:if="${#fields.hasErrors('state')}" th:errors="*{state}"></small>
 					</div>
 					
 					<div class="mb-3">
 						<label for="postalCode" class="form-label">postalCode</label>
 						<input type="number" class="form-control" id="postalCode" th:field="*{postalCode}">
+						 <small class="form-text text-danger" th:if="${#fields.hasErrors('postalCode')}" th:errors="*{postalCode}"></small>
 					</div>
 					
 					<div class="mb-3">
 						<label for="country" class="form-label">country</label>
 						<input type="text" class="form-control" id="country" th:field="*{country}">
+						 <small class="form-text text-danger" th:if="${#fields.hasErrors('country')}" th:errors="*{country}"></small>
 					</div>
 					
 					<div class="mb-3">
 						<label for="creditLimit" class="form-label">creditLimit</label>
 						<input type="number" class="form-control" id="creditLimit" th:field="*{creditLimit}">
+						 <small class="form-text text-danger" th:if="${#fields.hasErrors('creditLimit')}" th:errors="*{creditLimit}"></small>
 					</div>
 					
 					<div class="form-group col-12"><br>

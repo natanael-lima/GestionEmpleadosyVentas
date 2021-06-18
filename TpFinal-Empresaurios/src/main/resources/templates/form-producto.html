@@ -24,10 +24,11 @@
 			
 				<form th:action="@{/form/saveproduct}" th:object="${product}" method="post">
 					
-					<!-- <input type="hidden" th:field="*{productCode}"> --> 
-				
+	                <input type="hidden" th:field="*{productCode}"> 
+	                <input type="hidden" th:field="*{productLine.productLineId}"> 
+	                
 					<div class="mb-3">
-						<label for="productName" class="form-label">Nombre del Producto</label>
+						<label for="productName" class="form-label">name product</label>
 						<input type="text" class="form-control" id="productName" th:field="*{productName}">
 					</div>
 					
