@@ -39,9 +39,6 @@ public class Order {
 	@ManyToOne(fetch=FetchType.LAZY)
 	@JoinColumn(name = "cust_number")
 	private Customer customerNumber;
-
-	
-	
 	
 	
 	

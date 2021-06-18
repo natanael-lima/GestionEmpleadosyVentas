@@ -49,6 +49,97 @@ public class Employee {
 	//relacion cliente a empleados- mucho a uno
 	@OneToMany(mappedBy = "employee")
 	private List<Customer> customers;
+
+	public Employee(long employeeNumber, String lastName, String firstName, String email, String jobTitle,
+			Employee employee, Office office, List<Customer> customers) {
+		super();
+		this.employeeNumber = employeeNumber;
+		this.lastName = lastName;
+		this.firstName = firstName;
+		this.email = email;
+		this.jobTitle = jobTitle;
+		this.employee = employee;
+		this.office = office;
+		this.customers = customers;
+	}
+
+	public Employee() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	public long getEmployeeNumber() {
+		return employeeNumber;
+	}
+
+	public void setEmployeeNumber(long employeeNumber) {
+		this.employeeNumber = employeeNumber;
+	}
+
+	public String getLastName() {
+		return lastName;
+	}
+
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
+	}
+
+	public String getFirstName() {
+		return firstName;
+	}
+
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	public String getJobTitle() {
+		return jobTitle;
+	}
+
+	public void setJobTitle(String jobTitle) {
+		this.jobTitle = jobTitle;
+	}
+
+	public Employee getEmployee() {
+		return employee;
+	}
+
+	public void setEmployee(Employee employee) {
+		this.employee = employee;
+	}
+
+	public Office getOffice() {
+		return office;
+	}
+
+	public void setOffice(Office office) {
+		this.office = office;
+	}
+
+	public List<Customer> getCustomers() {
+		return customers;
+	}
+
+	public void setCustomers(List<Customer> customers) {
+		this.customers = customers;
+	}
+
+	@Override
+	public String toString() {
+		return "Employee [employeeNumber=" + employeeNumber + ", lastName=" + lastName + ", firstName=" + firstName
+				+ ", email=" + email + ", jobTitle=" + jobTitle + ", employee=" + employee + ", office=" + office
+				+ ", customers=" + customers + "]";
+	}
+	
+	
 	
 	
 }

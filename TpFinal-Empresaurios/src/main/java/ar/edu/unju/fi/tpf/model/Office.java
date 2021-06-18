@@ -39,8 +39,82 @@ public class Office {
 	
 	@Column(name="off_postalCode")
 	private long postalCode;
+	
 	//relacion empleado a oficina- mucho a uno
 	@OneToMany(mappedBy = "office")
 	private List<Employee> employee;
+	
+	public Office(long officeCode, String city, long phone, String addressLine, String state, String country,
+			long postalCode, List<Employee> employee) {
+		super();
+		this.officeCode = officeCode;
+		this.city = city;
+		this.phone = phone;
+		this.addressLine = addressLine;
+		this.state = state;
+		this.country = country;
+		this.postalCode = postalCode;
+		this.employee = employee;
+	}
+	public Office() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+	public long getOfficeCode() {
+		return officeCode;
+	}
+	public void setOfficeCode(long officeCode) {
+		this.officeCode = officeCode;
+	}
+	public String getCity() {
+		return city;
+	}
+	public void setCity(String city) {
+		this.city = city;
+	}
+	public long getPhone() {
+		return phone;
+	}
+	public void setPhone(long phone) {
+		this.phone = phone;
+	}
+	public String getAddressLine() {
+		return addressLine;
+	}
+	public void setAddressLine(String addressLine) {
+		this.addressLine = addressLine;
+	}
+	public String getState() {
+		return state;
+	}
+	public void setState(String state) {
+		this.state = state;
+	}
+	public String getCountry() {
+		return country;
+	}
+	public void setCountry(String country) {
+		this.country = country;
+	}
+	public long getPostalCode() {
+		return postalCode;
+	}
+	public void setPostalCode(long postalCode) {
+		this.postalCode = postalCode;
+	}
+	public List<Employee> getEmployee() {
+		return employee;
+	}
+	public void setEmployee(List<Employee> employee) {
+		this.employee = employee;
+	}
+	
+	@Override
+	public String toString() {
+		return "Office [officeCode=" + officeCode + ", city=" + city + ", phone=" + phone + ", addressLine="
+				+ addressLine + ", state=" + state + ", country=" + country + ", postalCode=" + postalCode
+				+ ", employee=" + employee + "]";
+	}
+	
 	
 }
