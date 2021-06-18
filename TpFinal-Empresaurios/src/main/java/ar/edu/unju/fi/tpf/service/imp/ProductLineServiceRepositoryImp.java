@@ -15,18 +15,27 @@ public class ProductLineServiceRepositoryImp implements IProductLineService{
 	IProductLineRepository prodLineRepo;
 
 	@Override
+	public void guardarProductLine(ProductLine productline) {
+		// TODO Auto-generated method stub
+		prodLineRepo.save(productline);
+	}
+
+	@Override
 	public List<ProductLine> obtenerProductLines() {
 		return (List<ProductLine>) prodLineRepo.findAll();
 	}
 
 	@Override
-	public void eliminarProd(Long productLineId) {
+	public void eliminarProductLine(Long productLineId) {
+		// TODO Auto-generated method stub
 		prodLineRepo.deleteById(productLineId);
 	}
 
 	@Override
-	public ProductLine buscarProduct(Long productLineId) {
+	public ProductLine buscarProductLine(Long productLineId) {
+		// TODO Auto-generated method stub
 		return prodLineRepo.findById(productLineId).orElse(null);
 	}
 
+	
 }

@@ -25,18 +25,18 @@
 			<!--    Inicio Section Form -->
 			<div class="col-12 col-sm-12 col-md-9 col-lg-9 bg-light p-3">
 			
-				<form th:action="@{/form/savecustomer}" th:object="${customer}" method="post">
+				<form th:action="@{/form/saveoffice}" th:object="${office}" method="post">
 					
 					<!-- <input type="hidden" th:field="*{productCode}"> --> 
 				
 					<div class="mb-3">
-						<label for="customerName" class="form-label">Nombre del Cliente</label>
-						<input type="text" class="form-control" id="customerName" th:field="*{customerName}">
+						<label for="city" class="form-label">city</label>
+						<input type="text" class="form-control" id="city" th:field="*{city}">
 					</div>
 					
 					<div class="mb-3">
 						<label for="phone" class="form-label">phone</label>
-						<input type="number" class="form-control" id="phone" th:field="*{phone}">
+						<input type="text" class="form-control" id="phone" th:field="*{phone}">
 					</div>
 					
 					<div class="mb-3">
@@ -45,18 +45,8 @@
 					</div>
 					
 					<div class="mb-3">
-						<label for="city" class="form-label">city</label>
-						<input type="text" class="form-control" id="city" th:field="*{city}">
-					</div>
-					
-					<div class="mb-3">
 						<label for="state" class="form-label">state</label>
 						<input type="text" class="form-control" id="state" th:field="*{state}">
-					</div>
-					
-					<div class="mb-3">
-						<label for="postalCode" class="form-label">postalCode</label>
-						<input type="number" class="form-control" id="postalCode" th:field="*{postalCode}">
 					</div>
 					
 					<div class="mb-3">
@@ -65,10 +55,10 @@
 					</div>
 					
 					<div class="mb-3">
-						<label for="creditLimit" class="form-label">creditLimit</label>
-						<input type="number" class="form-control" id="creditLimit" th:field="*{creditLimit}">
+						<label for="postalCode" class="form-label">postalCode</label>
+						<input type="text" class="form-control" id="phone" th:field="*{postalCode}">
 					</div>
-					
+
 					<div class="form-group col-12"><br>
 						 <button type="submit" style="background: #178C71;" class="btn text-light">Guardar</button>
 					</div>

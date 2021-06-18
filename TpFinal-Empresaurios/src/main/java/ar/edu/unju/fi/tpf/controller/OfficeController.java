@@ -7,56 +7,42 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
-
-import ar.edu.unju.fi.tpf.model.Product;
-import ar.edu.unju.fi.tpf.model.ProductLine;
-import ar.edu.unju.fi.tpf.service.IProductLineService;
-import ar.edu.unju.fi.tpf.service.IProductService;
+import ar.edu.unju.fi.tpf.model.Office;
+import ar.edu.unju.fi.tpf.service.IOfficeService;
 
 @Controller
-public class ProductController {
-
+public class OfficeController {
 	@Autowired
-	Product product;
+	Office office;
 	
 	@Autowired
-	IProductLineService prodLineService;
+	IOfficeService officeService;
 	
-	@Autowired
-	IProductService prodService;
-	
-	//============================ Metodo para ingresar al form producto ============================
-	@GetMapping("/form/product")
-	public String getFormProd(Model model) {
-		model.addAttribute(product);
-		model.addAttribute("productLines", prodLineService.obtenerProductLines());
-		return "form-producto";
+	//============================ Metodo para ingresar al form office ============================
+	@GetMapping("/form/office")
+	public String getFormOffice(Model model) {
+		model.addAttribute(office);
+		return "form-office";
 	}
 	
-	//============================ Metodo para mostrar tabla producto ============================
-	@GetMapping("/tablaprod")
-	public String getTablaprod(Model model) {
+	//============================ Metodo para mostrar tabla office ============================
+	@GetMapping("/tablaoffice")
+	public String getTablaOffice(Model model) {
 		
-		model.addAttribute("productos", prodService.obtenerProducts());
-		
-		return "tablaProduct";
+		model.addAttribute("offices", officeService.obtenerOffice());
+		return "tablaOffice";
 	}
 	
 	//============================ Metodo para almacenar los datos del form cargado ============================
-	@PostMapping("/form/saveproduct")
-	public ModelAndView saveProduct(@ModelAttribute("product") Product product) {
+	@PostMapping("/form/saveoffice")
+	public ModelAndView saveOffice(@ModelAttribute("office") Office office) {
 		
 			ModelAndView model;
-	
-			ProductLine prodLine = prodLineService.buscarProductLine(product.getProductLine().getProductLineId());
-			product.setProductLine(prodLine);
-			 
-			prodService.guardarProduct(product);
-			model= new ModelAndView("tablaProduct");
-			model.addObject("productos", prodService.obtenerProducts());
+			officeService.guardarOffice(office);
+			model= new ModelAndView("tablaOffice");
+			model.addObject("offices", officeService.obtenerOffice());
 			return model;
 	}
-		
 	
 	/*
 	 * @PostMapping("/form/saveproduct") public ModelAndView

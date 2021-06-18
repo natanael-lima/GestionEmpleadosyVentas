@@ -42,12 +42,124 @@ public class Customer {
 	@Column(name="cust_country")
 	private String country;
 	
-	//Relacion cleinte a empleados- mucho a uno
+	//Relacion cliente a empleados- mucho a uno
 	@ManyToOne(fetch=FetchType.LAZY)
     @JoinColumn(name = "emp_number")
 	private Employee employee;
 	
 	@Column(name="cust_creditLimit")
 	private long creditLimit;
+
+	
+	public Customer() {
+		
+		// TODO Auto-generated constructor stub
+	}
+
+	public Customer(long customerNumber, String customerName, long phone, String addressLine, String city, String state,
+			long postalCode, String country, Employee employee, long creditLimit) {
+		super();
+		this.customerNumber = customerNumber;
+		this.customerName = customerName;
+		this.phone = phone;
+		this.addressLine = addressLine;
+		this.city = city;
+		this.state = state;
+		this.postalCode = postalCode;
+		this.country = country;
+		this.employee = employee;
+		this.creditLimit = creditLimit;
+	}
+
+	public long getCustomerNumber() {
+		return customerNumber;
+	}
+
+	public void setCustomerNumber(long customerNumber) {
+		this.customerNumber = customerNumber;
+	}
+
+	public String getCustomerName() {
+		return customerName;
+	}
+
+	public void setCustomerName(String customerName) {
+		this.customerName = customerName;
+	}
+
+	public long getPhone() {
+		return phone;
+	}
+
+	public void setPhone(long phone) {
+		this.phone = phone;
+	}
+
+	public String getAddressLine() {
+		return addressLine;
+	}
+
+	public void setAddressLine(String addressLine) {
+		this.addressLine = addressLine;
+	}
+
+	public String getCity() {
+		return city;
+	}
+
+	public void setCity(String city) {
+		this.city = city;
+	}
+
+	public String getState() {
+		return state;
+	}
+
+	public void setState(String state) {
+		this.state = state;
+	}
+
+	public long getPostalCode() {
+		return postalCode;
+	}
+
+	public void setPostalCode(long postalCode) {
+		this.postalCode = postalCode;
+	}
+
+	public String getCountry() {
+		return country;
+	}
+
+	public void setCountry(String country) {
+		this.country = country;
+	}
+
+	public Employee getEmployee() {
+		return employee;
+	}
+
+	public void setEmployee(Employee employee) {
+		this.employee = employee;
+	}
+
+	public long getCreditLimit() {
+		return creditLimit;
+	}
+
+	public void setCreditLimit(long creditLimit) {
+		this.creditLimit = creditLimit;
+	}
+
+	@Override
+	public String toString() {
+		return "Customer [customerNumber=" + customerNumber + ", customerName=" + customerName + ", phone=" + phone
+				+ ", addressLine=" + addressLine + ", city=" + city + ", state=" + state + ", postalCode=" + postalCode
+				+ ", country=" + country + ", employee=" + employee + ", creditLimit=" + creditLimit + "]";
+	}
+	
+	
+	
+	
 }
 

@@ -1,10 +1,11 @@
 package ar.edu.unju.fi.tpf.model;
 
-import java.util.Arrays;
 import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
@@ -16,6 +17,7 @@ import org.springframework.stereotype.Component;
 @Entity
 public class ProductLine {
 	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name="prodL_productlineId")
 	private Long productLineId;
 	
@@ -26,7 +28,7 @@ public class ProductLine {
 	private String htmlDescription;
 	
 	@Column(name="prodL_image")
-	private byte[] image; //?
+	private String image; //?
 	
 	//Relacion producto a linea de producto - uno a muchos
 	@OneToMany(mappedBy = "productLine")
@@ -71,12 +73,11 @@ public class ProductLine {
 		this.product = product;
 	}
 	
-
-	public byte[] getImage() {
+	public String getImage() {
 		return image;
 	}
 
-	public void setImage(byte[] image) {
+	public void setImage(String image) {
 		this.image = image;
 	}
 
@@ -87,8 +88,7 @@ public class ProductLine {
 	@Override
 	public String toString() {
 		return "ProductLine [productLineId=" + productLineId + ", textDescription=" + textDescription
-				+ ", htmlDescription=" + htmlDescription + ", image=" + Arrays.toString(image) + ", product=" + product
-				+ "]";
+				+ ", htmlDescription=" + htmlDescription + ", image=" + image + ", product=" + product + "]";
 	}
 	
 	

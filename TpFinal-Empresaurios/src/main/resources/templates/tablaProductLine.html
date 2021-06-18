@@ -21,7 +21,7 @@
 		<div class="row m-0 p-5">
 		
 			<!--    Inicio Section Tabla -->
-			<div class="col-12 col-sm-12 col-md-9 col-lg-9 bg-light  p-3 " style="max-width: 100%">
+			<div class="col-12 col-sm-12 col-md-9 col-lg-9 bg-light p-3">
 			
 				<div class="table-responsive-sm">	
 				
@@ -30,27 +30,22 @@
 				  <thead>
 				    <tr>
 				    
-				       <th scope="col">#</th>
-				       <th scope="col">productName</th>
-		               <th scope="col">productScale</th>
-		               <th scope="col">productVendor</th>
-		               <th scope="col">productDescription</th>
-		               <th scope="col">quantityInStock</th>
-		               <th scope="col">buyPrice</th>
-					   <th scope="col">ProductLine</th>
+				       <th scope="col">productLineId</th>
+		               <th scope="col">textDescription</th>
+		               <th scope="col">htmlDescription</th>
+		               <th scope="col">image</th>
+		               <th scope="col">DownloadImage</th>
 				    </tr>
 				    
 				  </thead>
 				  <tbody>
-				    <tr th:each="prod : ${productos}">
-				      <td th:text="${prod.productCode}"></td>
-				      <td th:text="${prod.productName}"></td>
-		              <td th:text="${prod.productScale}"></td>
-		              <td th:text="${prod.productVendor}"></td>
-		              <td th:text="${prod.productDescription}"></td>
-		              <td th:text="${prod.quantityInStock}"></td>
-		              <td th:text="${prod.buyPrice}"></td>
-		              <td th:text="${prod.productLine.textDescription}"></td>
+				    <tr th:each="pl : ${productosLine}">
+				      <td th:text="${pl.productLineId}"></td>
+		              <td th:text="${pl.textDescription}"></td>
+		              <td th:text="${pl.htmlDescription}"></td>
+		              <td> <img class="img-responsive mx-auto d-block" th:alt="${pl.image}" th:src="@{'/images/' + ${pl.image}}" style="max-width: 45%;"> </td>
+		              
+		              <td><a th:href="@{'/images/' + ${pl.image}}" download="nombre_imagen" class="btn btn-outline-light my-2">Descarga</a></td>
 		
 		               <!-- <td><a th:href="@{/form/eliminar/}+${prod.productCode}" class="btn btn-light my-2">Editar</a></td>
 		               <td><a th:href="@{/form/modificar/}+${prod.productCode}" class="btn btn-light my-2">Eliminar</a></td>  -->

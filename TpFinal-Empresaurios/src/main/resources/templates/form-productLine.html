@@ -25,48 +25,23 @@
 			<!--    Inicio Section Form -->
 			<div class="col-12 col-sm-12 col-md-9 col-lg-9 bg-light p-3">
 			
-				<form th:action="@{/form/savecustomer}" th:object="${customer}" method="post">
+				<form th:action="@{/form/saveproductline}" th:object="${productLine}" method="post" enctype="multipart/form-data">
 					
 					<!-- <input type="hidden" th:field="*{productCode}"> --> 
 				
 					<div class="mb-3">
-						<label for="customerName" class="form-label">Nombre del Cliente</label>
-						<input type="text" class="form-control" id="customerName" th:field="*{customerName}">
+						<label for="textDescription" class="form-label">textDescription</label>
+						<input type="text" class="form-control" id="textDescription" th:field="*{textDescription}">
 					</div>
 					
 					<div class="mb-3">
-						<label for="phone" class="form-label">phone</label>
-						<input type="number" class="form-control" id="phone" th:field="*{phone}">
+						<label for="htmlDescription" class="form-label">htmlDescription</label>
+						<input type="text" class="form-control" id="htmlDescription" th:field="*{htmlDescription}">
 					</div>
 					
 					<div class="mb-3">
-						<label for="addressLine" class="form-label">addressLine</label>
-						<input type="text" class="form-control" id="addressLine" th:field="*{addressLine}">
-					</div>
-					
-					<div class="mb-3">
-						<label for="city" class="form-label">city</label>
-						<input type="text" class="form-control" id="city" th:field="*{city}">
-					</div>
-					
-					<div class="mb-3">
-						<label for="state" class="form-label">state</label>
-						<input type="text" class="form-control" id="state" th:field="*{state}">
-					</div>
-					
-					<div class="mb-3">
-						<label for="postalCode" class="form-label">postalCode</label>
-						<input type="number" class="form-control" id="postalCode" th:field="*{postalCode}">
-					</div>
-					
-					<div class="mb-3">
-						<label for="country" class="form-label">country</label>
-						<input type="text" class="form-control" id="country" th:field="*{country}">
-					</div>
-					
-					<div class="mb-3">
-						<label for="creditLimit" class="form-label">creditLimit</label>
-						<input type="number" class="form-control" id="creditLimit" th:field="*{creditLimit}">
+					    <a>Imagen</a><br>
+						<input type="file" name="file"id="image" />
 					</div>
 					
 					<div class="form-group col-12"><br>

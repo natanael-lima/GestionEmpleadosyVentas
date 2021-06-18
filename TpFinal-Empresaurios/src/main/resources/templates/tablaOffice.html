@@ -21,7 +21,7 @@
 		<div class="row m-0 p-5">
 		
 			<!--    Inicio Section Tabla -->
-			<div class="col-12 col-sm-12 col-md-9 col-lg-9 bg-light  p-3 " style="max-width: 100%">
+			<div class="col-12 col-sm-12 col-md-9 col-lg-9 bg-light p-3">
 			
 				<div class="table-responsive-sm">	
 				
@@ -31,26 +31,24 @@
 				    <tr>
 				    
 				       <th scope="col">#</th>
-				       <th scope="col">productName</th>
-		               <th scope="col">productScale</th>
-		               <th scope="col">productVendor</th>
-		               <th scope="col">productDescription</th>
-		               <th scope="col">quantityInStock</th>
-		               <th scope="col">buyPrice</th>
-					   <th scope="col">ProductLine</th>
+				       <th scope="col">city</th>
+		               <th scope="col">phone</th>
+		               <th scope="col">addressLine</th>
+		               <th scope="col">state</th>
+		               <th scope="col">country</th>
+		               <th scope="col">postalCode</th>
 				    </tr>
 				    
 				  </thead>
 				  <tbody>
-				    <tr th:each="prod : ${productos}">
-				      <td th:text="${prod.productCode}"></td>
-				      <td th:text="${prod.productName}"></td>
-		              <td th:text="${prod.productScale}"></td>
-		              <td th:text="${prod.productVendor}"></td>
-		              <td th:text="${prod.productDescription}"></td>
-		              <td th:text="${prod.quantityInStock}"></td>
-		              <td th:text="${prod.buyPrice}"></td>
-		              <td th:text="${prod.productLine.textDescription}"></td>
+				    <tr th:each="off : ${offices}">
+				      <td th:text="${off.officeCode}"></td>
+				      <td th:text="${off.city}"></td>
+		              <td th:text="${off.phone}"></td>
+		              <td th:text="${off.addressLine}"></td>
+		              <td th:text="${off.state}"></td>
+		              <td th:text="${off.country}"></td>
+		              <td th:text="${off.postalCode}"></td>
 		
 		               <!-- <td><a th:href="@{/form/eliminar/}+${prod.productCode}" class="btn btn-light my-2">Editar</a></td>
 		               <td><a th:href="@{/form/modificar/}+${prod.productCode}" class="btn btn-light my-2">Eliminar</a></td>  -->
@@ -92,4 +90,4 @@
 	<script src="/webjars/popper.js/1.16.1/dist/popper.min.js"></script>
 	<script src="/webjars/bootstrap/4.6.0/js/bootstrap.min.js"></script>
 </body>
-</html>
+</html>>
