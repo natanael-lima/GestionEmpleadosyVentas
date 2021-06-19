@@ -30,48 +30,52 @@ public class OrderDetail implements Serializable{
 	
 	@Column(name="ordD_lineNumber")
 	private int orderLineNumber;
-	
-	
-	
-	
-	
+
+	public OrderDetail(OrderDetailId orderId, int quantityOrdered, double priceEach, int orderLineNumber) {
+		super();
+		this.orderId = orderId;
+		this.quantityOrdered = quantityOrdered;
+		this.priceEach = priceEach;
+		this.orderLineNumber = orderLineNumber;
+	}
+
 	public OrderDetail() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
-	
+
 	public OrderDetailId getOrderId() {
 		return orderId;
 	}
-
-
 
 	public void setOrderId(OrderDetailId orderId) {
 		this.orderId = orderId;
 	}
 
-
-
-	public long getQuantityOrdered() {
+	public int getQuantityOrdered() {
 		return quantityOrdered;
 	}
+
 	public void setQuantityOrdered(int quantityOrdered) {
 		this.quantityOrdered = quantityOrdered;
 	}
-	
+
 	public double getPriceEach() {
 		return priceEach;
 	}
+
 	public void setPriceEach(double priceEach) {
 		this.priceEach = priceEach;
 	}
-	
-	public long getOrderLineNumber() {
+
+	public int getOrderLineNumber() {
 		return orderLineNumber;
 	}
+
 	public void setOrderLineNumber(int orderLineNumber) {
 		this.orderLineNumber = orderLineNumber;
 	}
+	
+	
 	
 	
 }

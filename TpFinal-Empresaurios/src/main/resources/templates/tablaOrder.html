@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org">
+	<head>
+		<!-- Required meta tags -->
+		<meta charset="utf-8">
+		<meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1">
+		<link rel="icon" href="img/dinow.ico">
+		<!-- Bootstrap CSS -->
+		<link rel="stylesheet" href="/webjars/bootstrap/4.6.0/css/bootstrap.min.css">
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+		<title>Empresaurios</title>
+	</head>
+<body>
+	<!--     Inicio Menu -->
+	<div th:insert="layouts/menu :: menu"></div>
+	<!--    Fin Menu -->
+
+	<!--    Inicio Contendeor 1 -->
+	
+	<div class="container">
+		<div class="row m-0 p-5">
+		
+			<!--    Inicio Section Tabla -->
+			<div class="col-12 col-sm-12 col-md-9 col-lg-9 bg-light p-3">
+			
+				<div class="table-responsive-sm">	
+				
+		 		<table class="tab2 table table-bordered table-dark ">
+		 		
+				  <thead>
+				    <tr>
+				    
+				       <th scope="col">#</th>
+				       <th scope="col">Fecha de Orden</th>
+		               <th scope="col">Fecha de LLegada</th>
+		               <th scope="col">Fecha de Envio</th>
+		               <th scope="col">Estado</th>
+		               <th scope="col">Comentario</th>
+		               <th scope="col">Cliente</th>
+		               <th scope="col">Empleado a Cargo</th>
+				    </tr>
+				    
+				  </thead>
+				  <tbody>
+				    <tr th:each="ord : ${orders}">
+				     <td th:text="${ord.orderNumber}"></td>
+				      <td th:text="${#temporals.format(ord.orderDate,'dd/MM/yyyy')}"></td>
+				      <td th:text="${#temporals.format(ord.requiredDate,'dd/MM/yyyy')}"></td>
+		              <td th:text="${#temporals.format(ord.shippedDate,'dd/MM/yyyy')}"></td>
+		              <td th:text="${ord.status}"></td>
+		              <td th:text="${ord.comments}"></td>
+		              <td th:text="${ord.customerNumber.customerName}"></td>
+		              <td th:text="${ord.customerNumber.employee.lastName}"></td>
+	
+		
+		               <!-- <td><a th:href="@{/form/eliminar/}+${prod.productCode}" class="btn btn-light my-2">Editar</a></td>
+		               <td><a th:href="@{/form/modificar/}+${prod.productCode}" class="btn btn-light my-2">Eliminar</a></td>  -->
+				    </tr>
+				  
+				  </tbody>
+				</table>
+		 </div>	
+
+			</div>
+		</div>
+	</div>
+	
+<!--    Inicio Contendeor 2 -->
+
+	<div class="card text-center">
+	
+		<div class="card-header">Grupo Empresaurios</div>
+		
+		<div class="card-body">
+			<h5 class="card-title">Alumnos</h5>
+			<p class="card-text">Desarrollo de pagina web realizado por
+				Gaitan Maximiliano - Lima Natanael - Virreyra Raquel - Loto Mateo.</p>
+			<a style="background: #178C71;" href="#" class="btn text-light">
+				Ver	grupo
+			</a>
+		</div>
+		
+		<div class="card-footer text-muted">Programacion Visual 2021</div>
+		
+	</div>
+	<!--    Fin Contendeor 2 -->
+	
+	<!--  Footer -->
+	<div th:insert="layouts/footer :: foot"></div>
+
+	<!-- JavaScript  Jquery Popper and Bootstrap JS -->
+	<script src="/webjars/jquery/3.5.1/jquery.slim.min.js"></script>
+	<script src="/webjars/popper.js/1.16.1/dist/popper.min.js"></script>
+	<script src="/webjars/bootstrap/4.6.0/js/bootstrap.min.js"></script>
+</body>
+</html>>

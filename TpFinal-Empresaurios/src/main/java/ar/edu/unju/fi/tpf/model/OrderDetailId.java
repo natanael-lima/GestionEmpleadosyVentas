@@ -2,6 +2,7 @@ package ar.edu.unju.fi.tpf.model;
 
 import java.io.Serializable;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Embeddable;
 import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
@@ -19,7 +20,7 @@ public class OrderDetailId implements Serializable{
 	@JoinColumn(name="prod_code")
 	private Product productCode;
 	
-	@ManyToOne(fetch=FetchType.LAZY)
+	@ManyToOne(cascade=CascadeType.PERSIST)
 	@JoinColumn(name="ord_number")
 	private Order orderNumber;
 

@@ -24,47 +24,69 @@
 			<!--    Inicio Section Form -->
 			<div class="col-12 col-sm-12 col-md-9 col-lg-9 bg-light p-3">
 			
-				<form th:action="@{/form/saveOrder}" th:object="${order}" method="POST">
+				<form th:action="@{/form/saveOrderDetail}" method="POST">
 					
 					<!-- <input type="hidden" th:field="*{productCode}"> --> 
 				
 					<div class="mb-3">
 						<label for="orderDate" class="form-label">Fecha de Orden</label>
-						<input type="date" class="form-control" id="orderDate" th:field="*{orderDate}">
+						<input type="date" class="form-control" id="orderDate" th:field="*{order.orderDate}">
 					</div>
 					
 					<div class="mb-3">
 						<label for="requiredDate" class="form-label">Fecha de Llegada</label>
-						<input type="date" class="form-control" id="requiredDate" th:field="*{requiredDate}">
+						<input type="date" class="form-control" id="requiredDate" th:field="*{order.requiredDate}">
 					</div>
 					
 					<div class="mb-3">
 						<label for="shippedDate" class="form-label">Fecha de envio</label>
-						<input type="date" class="form-control" id="shippedDate" th:field="*{shippedDate}">
+						<input type="date" class="form-control" id="shippedDate" th:field="*{order.shippedDate}">
 					</div>
 					
 					<div class="mb-3">
 						<label for="status" class="form-label">Estado</label>
-						<input type="text" class="form-control" id="status" th:field="*{status}">
+						<input type="text" class="form-control" id="status" th:field="*{order.status}">
 					</div>
 					
 					<div class="mb-3">
 						<label for="comments" class="form-label">Comentario</label>
-						<input type="text" class="form-control" id="state" th:field="*{comments}">
+						<input type="text" class="form-control" id="state" th:field="*{order.comments}">
 					</div>
 					
 					<div class="mb-3">
 						  <label for="customer" class="form-label">Cliente:</label>
-						    <select id="customer" th:field="*{customerNumber}">
+						    <select id="customer" th:field="*{order.customerNumber}">
 						    	<option th:each="cust: ${customers}" th:value="${cust.customerNumber}" th:text="${cust.customerName}" th:selected="false">
 						    </select>
 					</div>
 					
 					<div class="mb-3">
 						  <label for="employee" class="form-label">Empleado a cargo:</label>
-						    <select id="employee" th:field="*{customerNumber.employee}">
+						    <select id="employee" th:field="*{order.customerNumber.employee}">
 						    	<option th:each="emp: ${employees}" th:value="${emp.employeeNumber}" th:text="${emp.lastName}" th:selected="false">
 						    </select>
+					</div>
+					<!-- Nuevo del Order Detail -->
+					<div class="mb-3">
+						  <label for="products" class="form-label">Productos</label>
+						    <select id="products" th:field="*{orderDetail.orderId.productCode}">
+						    	<option th:each="prods: ${products}" th:value="${prods.productCode}" th:text="${prods.productName}" th:selected="false">
+						    </select>
+					</div>
+					
+					<div class="mb-3">
+						<label for="quantityOrdered" class="form-label">Cantidad Ordenada</label>
+						<input type="number" class="form-control" id="quantityOrdered" th:field="*{orderDetail.quantityOrdered}">
+					</div>
+					
+					<div class="mb-3">
+						<label for="priceEach" class="form-label">Precio de cada uno</label>
+						<input type="number" class="form-control" id="priceEach" th:field="*{orderDetail.priceEach}">
+					</div>
+					
+					<div class="mb-3">
+						<label for="orderLineNumber" class="form-label">Precio de cada uno</label>
+						<input type="number" class="form-control" id="orderLineNumber" th:field="*{orderDetail.orderLineNumber}">
 					</div>
 					
 					
