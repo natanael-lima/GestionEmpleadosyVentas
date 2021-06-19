@@ -10,6 +10,7 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 @Component
@@ -19,7 +20,7 @@ public class ProductLine {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name="prodL_productlineId")
-	private Long productLineId;
+	private long productLineId;
 	
 	@Column(name="prodL_textdescription")
 	private String textDescription;
@@ -28,9 +29,10 @@ public class ProductLine {
 	private String htmlDescription;
 	
 	@Column(name="prodL_image")
-	private String image; //?
+	private String image; 
 	
 	//Relacion producto a linea de producto - uno a muchos
+	@Autowired
 	@OneToMany(mappedBy = "productLine")
 	private List<Product> product;
 	
@@ -41,11 +43,11 @@ public class ProductLine {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Long getProductLineId() {
+	public long getProductLineId() {
 		return productLineId;
 	}
 
-	public void setProductLine(Long productLineId) {
+	public void setProductLineId(long productLineId) {
 		this.productLineId = productLineId;
 	}
 
@@ -65,14 +67,6 @@ public class ProductLine {
 		this.htmlDescription = htmlDescription;
 	}
 
-	public List<Product> getProduct() {
-		return product;
-	}
-
-	public void setProduct(List<Product> product) {
-		this.product = product;
-	}
-	
 	public String getImage() {
 		return image;
 	}
@@ -81,8 +75,12 @@ public class ProductLine {
 		this.image = image;
 	}
 
-	public void setProductLineId(Long productLineId) {
-		this.productLineId = productLineId;
+	public List<Product> getProduct() {
+		return product;
+	}
+
+	public void setProduct(List<Product> product) {
+		this.product = product;
 	}
 
 	@Override
@@ -90,6 +88,7 @@ public class ProductLine {
 		return "ProductLine [productLineId=" + productLineId + ", textDescription=" + textDescription
 				+ ", htmlDescription=" + htmlDescription + ", image=" + image + ", product=" + product + "]";
 	}
+
 	
 	
 	

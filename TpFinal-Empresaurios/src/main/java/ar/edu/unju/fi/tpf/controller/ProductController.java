@@ -1,10 +1,13 @@
 package ar.edu.unju.fi.tpf.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -28,8 +31,10 @@ public class ProductController {
 	//============================ Metodo para ingresar al form producto ============================
 	@GetMapping("/form/product")
 	public String getFormProd(Model model) {
-		model.addAttribute(product);
-		model.addAttribute("productLines", prodLineService.obtenerProductLines());
+		 Product product = new Product();
+		 model.addAttribute("product", product); 
+		 List<ProductLine> listProdLines = prodLineService.obtenerProductLines();
+		 model.addAttribute("productLines", listProdLines);
 		return "form-producto";
 	}
 	
@@ -38,7 +43,7 @@ public class ProductController {
 	public String getTablaprod(Model model) {
 		
 		model.addAttribute("productos", prodService.obtenerProducts());
-		
+		model.addAttribute("productLines", prodLineService.obtenerProductLines());
 		return "tablaProduct";
 	}
 	
@@ -53,34 +58,28 @@ public class ProductController {
 			 
 			prodService.guardarProduct(product);
 			model= new ModelAndView("tablaProduct");
-			model.addObject("productos", prodService.obtenerProducts());
+			
 			return model;
 	}
-		
 	
-	/*
-	 * @PostMapping("/form/saveproduct") public ModelAndView
-	 * getsaveProduct(@Valid @ModelAttribute("product") Product product,
-	 * BindingResult result) { ModelAndView model; if(result.hasErrors()) { model=
-	 * new ModelAndView("form-producto"); model.addObject(product); return model; }
-	 * else { prodRepo.save(product); model= new ModelAndView("tablaProduct");
-	 * model.addObject("productos", prodRepo.findAll());
-	 * System.out.println("SE GUARDO CORRECTAMENTE"); return model; }
-	 * 
-	 * }
-	 */
 	
-	/*
-	 * @GetMapping("/form/eliminar/{id}") public ModelAndView
-	 * getEliminarProduct(@PathVariable(value = "id") String param) { ModelAndView
-	 * model = new ModelAndView("tablaProduct"); prodRepo.deleteById(param);
-	 * model.addObject("productos", prodRepo.findAll()); return model; }
-	 * 
-	 * @GetMapping("/form/modificar/{id}") public ModelAndView
-	 * getModificarProduct(@PathVariable(value = "id") String param) { ModelAndView
-	 * model = new ModelAndView("tablaProduct"); Optional<Product> product =
-	 * prodRepo.findById(param); model.addObject("product", product); return model;
-	 * }
-	 */
+	  @GetMapping("/form/eliminarProduct/{id}")
+	  public ModelAndView getEliminarProduct(@PathVariable(value = "id") long param) { 
+	  ModelAndView model = new ModelAndView("tablaProduct");
+	  prodService.eliminarProduct(param);
+	  model.addObject("productos", prodService.obtenerProducts()); 
+	  return model; }
+	  
+	  @GetMapping("/form/modificarProduct/{id}") 
+	  public ModelAndView getModificarProduct(@PathVariable(value = "id") Long param) {
+		  ModelAndView model = new ModelAndView("form-producto");
+		  Product product = prodService.buscarProduct(param); 
+		  List<ProductLine> listProdLines = prodLineService.obtenerProductLines();
+		  model.addObject("product", product); 
+		  
+		  model.addObject("productLines", listProdLines);
+		  return model;
+	  }
+	 
 		
 }

@@ -9,6 +9,11 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 import org.springframework.stereotype.Component;
 
@@ -22,21 +27,32 @@ public class Office {
 	@Column(name="off_code")
 	private long officeCode;
 	
+	@NotEmpty(message = "Debes ingresar city")
+	@Size(min = 4,max = 50, message="Minimo 3 y Maximo 50 caracteres")
 	@Column(name="off_city")
 	private String city;
 	
+	@NotNull(message = "Debes ingresar phone")
+	@Min(value=1000000, message="Error")
+	@Max(value=1000000000, message="Error")
 	@Column(name="off_phone")
 	private long phone;
 	
+	@NotEmpty(message = "Debes ingresar address")
 	@Column(name="off_addressLine")
 	private String addressLine;
 	
+	@NotEmpty(message = "Debes ingresar state")
 	@Column(name="off_state")
 	private String state;
 	
+	@NotEmpty(message = "Debes ingresar country")
 	@Column(name="off_country")
 	private String country;
 	
+	@NotNull(message = "Debes ingresar postal")
+	@Min(value=1000, message="Error")
+	@Max(value=10000, message="Error")
 	@Column(name="off_postalCode")
 	private long postalCode;
 	

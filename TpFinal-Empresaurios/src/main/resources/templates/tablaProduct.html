@@ -52,8 +52,8 @@
 		              <td th:text="${prod.buyPrice}"></td>
 		              <td th:text="${prod.productLine.textDescription}"></td>
 		
-		               <!-- <td><a th:href="@{/form/eliminar/}+${prod.productCode}" class="btn btn-light my-2">Editar</a></td>
-		               <td><a th:href="@{/form/modificar/}+${prod.productCode}" class="btn btn-light my-2">Eliminar</a></td>  -->
+		               <td><a th:href="@{/form/modificarProduct/}+${prod.productCode}"  class="btn btn-info my-2">Editar</a></td>
+		               <td><a th:href="@{/form/eliminarProduct/}+${prod.productCode}"class="btn btn-danger my-2">Eliminar</a></td>
 				    </tr>
 				  
 				  </tbody>

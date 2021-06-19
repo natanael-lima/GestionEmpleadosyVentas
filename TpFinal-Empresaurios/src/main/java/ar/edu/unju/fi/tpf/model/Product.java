@@ -10,6 +10,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 @Component
@@ -19,12 +20,13 @@ public class Product {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name="prod_code") 
-	private Long productCode; 
+	private long productCode; 
 	
 	@Column(name="prod_name")
 	private String productName;
 	
 	//Relacion producto a linea de producto - muchos a uno
+	@Autowired
 	@ManyToOne(fetch=FetchType.LAZY)
 	@JoinColumn(name = "prodL_productLine")
 	private ProductLine productLine;
@@ -49,11 +51,12 @@ public class Product {
 		super();
 	}
 
-	public Long getProductCode() {
+
+	public long getProductCode() {
 		return productCode;
 	}
-
-	public void setProductCode(Long productCode) {
+	
+	public void setProductCode(long productCode) {
 		this.productCode = productCode;
 	}
 
@@ -112,7 +115,7 @@ public class Product {
 	public void setBuyPrice(double buyPrice) {
 		this.buyPrice = buyPrice;
 	}
-	
+
 
 	@Override
 	public String toString() {
@@ -120,7 +123,8 @@ public class Product {
 				+ ", productScale=" + productScale + ", productVendor=" + productVendor + ", productDescription="
 				+ productDescription + ", quantityInStock=" + quantityInStock + ", buyPrice=" + buyPrice + "]";
 	}
-	
+
+
 	
 	
 }

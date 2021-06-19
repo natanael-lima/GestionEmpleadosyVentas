@@ -45,7 +45,7 @@
 		              <td th:text="${pl.htmlDescription}"></td>
 		              <td> <img class="img-responsive mx-auto d-block" th:alt="${pl.image}" th:src="@{'/images/' + ${pl.image}}" style="max-width: 45%;"> </td>
 		              
-		              <td><a th:href="@{'/images/' + ${pl.image}}" download="nombre_imagen" class="btn btn-outline-light my-2">Descarga</a></td>
+		              <td><a th:href="@{'/images/' + ${pl.image}}" download="nombre_imagen" class="btn btn-success my-2">Descarga</a></td>
 		
 		               <!-- <td><a th:href="@{/form/eliminar/}+${prod.productCode}" class="btn btn-light my-2">Editar</a></td>
 		               <td><a th:href="@{/form/modificar/}+${prod.productCode}" class="btn btn-light my-2">Eliminar</a></td>  -->

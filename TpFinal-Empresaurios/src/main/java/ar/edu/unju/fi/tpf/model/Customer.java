@@ -9,6 +9,12 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.validation.Valid;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 import org.springframework.stereotype.Component;
 
@@ -21,32 +27,48 @@ public class Customer {
 	@Column(name="cust_number")
 	private long customerNumber;
 	
+	@NotEmpty(message = "Debes ingresar name")
+	@Size(min = 3,max = 50, message="Minimo 3 y Maximo 50 caracteres")
 	@Column(name="cust_name")
 	private String customerName;
 	
+	@NotNull(message = "Debes ingresar phone")
+	@Min(value=1000000, message="Error")
+	@Max(value=1000000000, message="Error")
 	@Column(name="cust_phone")
 	private long phone;
 	
+	@NotEmpty(message = "Debes ingresar Address")
 	@Column(name="cust_addressLine")
 	private String addressLine;
 	
+	@NotEmpty(message = "Debes ingresar city")
 	@Column(name="cust_city")
 	private String city;
 	
+	@NotEmpty(message = "Debes ingresar state")
 	@Column(name="cust_state")
 	private String state;
 	
+	@NotNull(message = "Debes ingresar postal")
+	@Min(value=1000, message="Error")
+	@Max(value=10000, message="Error")
 	@Column(name="cust_postalCode")
 	private long postalCode;
 	
+	@NotEmpty(message = "Debes ingresar country")
 	@Column(name="cust_country")
 	private String country;
 	
 	//Relacion cliente a empleados- mucho a uno
+	
 	@ManyToOne(fetch=FetchType.LAZY)
     @JoinColumn(name = "emp_number")
 	private Employee employee;
 	
+	@NotNull(message = "Debes ingresar creditLimit")
+	@Min(value=100, message="Error")
+	@Max(value=10000000, message="Error")
 	@Column(name="cust_creditLimit")
 	private long creditLimit;
 
