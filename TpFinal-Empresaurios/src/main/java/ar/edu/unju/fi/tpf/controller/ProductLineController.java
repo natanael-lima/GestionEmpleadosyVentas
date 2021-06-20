@@ -5,11 +5,15 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
@@ -35,42 +39,73 @@ public class ProductLineController {
 		return "form-productLine";
 	}
 	
-	//============================ Metodo para mostrar la tabla productLine ============================
+	//============================ Metodo para MOSTRAR la tabla productLine ============================
 	@GetMapping("/tablaprodline")
 	public String getTablaProdLine(Model model) {
 		
-		model.addAttribute("productosLine",prodLineService.obtenerProductLines() );
+		model.addAttribute("productosLine",prodLineService.obtenerProductLines());
 		
 		return "tablaProductLine";
 	}
 	
-	//============================ Metodo para almacenar los datos del form cargados ============================
+	//============================ Metodo para GUARDAR los datos del form cargados ============================
 	@PostMapping("/form/saveproductline")
-	public ModelAndView saveProductLine(@ModelAttribute("productLine") ProductLine productLine, @RequestParam("file") MultipartFile imagen) {
+	public ModelAndView saveProductLine(@Valid @ModelAttribute("productLine") ProductLine productLine, BindingResult result, @RequestParam("file") MultipartFile imagen ) {
 		
 			ModelAndView model;
-            //***Para recibir la imagen y crear la ruta abs***
-			if(!imagen.isEmpty()) {
-				Path directorioImagenes = Paths.get("src//main//resources//static/images");
-				String rutaAbsoluta = directorioImagenes.toFile().getAbsolutePath();
-				// execption para que evite errores
-				try { 
-					byte[] byteImg = imagen.getBytes();
-					Path rutaCompleta = Paths.get(rutaAbsoluta + "//" + imagen.getOriginalFilename());
-					Files.write(rutaCompleta, byteImg);
-					productLine.setImage(imagen.getOriginalFilename());
+			
+			if(result.hasErrors()){ //Si tiene errores
+				model=new ModelAndView("form-productLine");
+				return model;
+			}
+				//No tiene errores 
+				
+				//***Para recibir la imagen y crear la ruta abs***
+				
+				if(!imagen.isEmpty()) { 
+					Path directorioImagenes = Paths.get("src//main//resources//static/images");
+					String rutaAbsoluta = directorioImagenes.toFile().getAbsolutePath();
+					// exception para que evite errores
+					try { 
+						byte[] byteImg = imagen.getBytes();
+						Path rutaCompleta = Paths.get(rutaAbsoluta + "//" + imagen.getOriginalFilename());
+						Files.write(rutaCompleta, byteImg);
+						productLine.setImage(imagen.getOriginalFilename());
+						
+					} catch (IOException e) {
+						e.printStackTrace();
+					}
 					
-				} catch (IOException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
 				}
 				
-			}
-			
-			prodLineService.guardarProductLine(productLine);;
-			model= new ModelAndView("tablaProductLine");
-			model.addObject("productosLine", prodLineService.obtenerProductLines());
-			return model;
+				prodLineService.guardarProductLine(productLine);
+				model= new ModelAndView("tablaProductLine");
+				model.addObject("productosLine", prodLineService.obtenerProductLines());
+				return model;
+            
 	}
+	
+	
+	
+	//============================ Metodo para ELIMINAR los datos del form cargado ============================
+	@GetMapping("/form/eliminarProdLine/{id}")
+	public String getEliminarProdLine(@PathVariable(name="id")long param, Model model) {
 		
+		prodLineService.eliminarProductLine(param);
+		model.addAttribute("productosLine", prodLineService.obtenerProductLines());
+		
+		return "tablaProductLine";
+	}
+	
+	
+	//============================ Metodo para EDITAR los datos del form cargado ============================
+		@GetMapping("/form/editarProdLine/{id}")
+		public String getEditarProdLine (@PathVariable(name="id") long param, Model model) {
+			
+			ProductLine prodLine = prodLineService.buscarProductLine(param);
+			model.addAttribute("productLine", prodLine);
+			
+			return "form-productLine";
+		}
+	
 }

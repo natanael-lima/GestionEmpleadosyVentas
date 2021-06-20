@@ -9,6 +9,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.validation.constraints.NotEmpty;
 
 import org.springframework.stereotype.Component;
 
@@ -16,36 +17,38 @@ import org.springframework.stereotype.Component;
 @Table(name="PRODUCTLINES")
 @Entity
 public class ProductLine {
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name="prodL_productlineId")
-	private Long productLineId;
+	//@NotNull(message = "Campo Obligatorio")
+	private long productLineId;
 	
 	@Column(name="prodL_textdescription")
+	@NotEmpty(message = "Campo Obligatorio")
 	private String textDescription;
 	
 	@Column(name="prodL_htmldescription")
+	@NotEmpty(message = "Campo Obligatorio")
 	private String htmlDescription;
 	
 	@Column(name="prodL_image")
-	private String image; //?
+	private String image; 
 	
 	//Relacion producto a linea de producto - uno a muchos
 	@OneToMany(mappedBy = "productLine")
 	private List<Product> product;
-	
-	
+		
 	
 	public ProductLine() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
-	public Long getProductLineId() {
+	public long getProductLineId() {
 		return productLineId;
 	}
 
-	public void setProductLine(Long productLineId) {
+	public void setProductLineId(long productLineId) {
 		this.productLineId = productLineId;
 	}
 
@@ -65,14 +68,6 @@ public class ProductLine {
 		this.htmlDescription = htmlDescription;
 	}
 
-	public List<Product> getProduct() {
-		return product;
-	}
-
-	public void setProduct(List<Product> product) {
-		this.product = product;
-	}
-	
 	public String getImage() {
 		return image;
 	}
@@ -81,8 +76,12 @@ public class ProductLine {
 		this.image = image;
 	}
 
-	public void setProductLineId(Long productLineId) {
-		this.productLineId = productLineId;
+	public List<Product> getProduct() {
+		return product;
+	}
+
+	public void setProduct(List<Product> product) {
+		this.product = product;
 	}
 
 	@Override
@@ -90,7 +89,5 @@ public class ProductLine {
 		return "ProductLine [productLineId=" + productLineId + ", textDescription=" + textDescription
 				+ ", htmlDescription=" + htmlDescription + ", image=" + image + ", product=" + product + "]";
 	}
-	
-	
 	
 }

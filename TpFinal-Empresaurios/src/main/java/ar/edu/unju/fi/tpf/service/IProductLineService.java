@@ -11,8 +11,8 @@ public interface IProductLineService {
 	
 	public List<ProductLine> obtenerProductLines();
 	
-	public void eliminarProductLine(Long productLineId);
+	public void eliminarProductLine(long productLineId);
 	
-	public ProductLine buscarProductLine(Long productLineId);
+	public ProductLine buscarProductLine(long productLineId);
 	
 }

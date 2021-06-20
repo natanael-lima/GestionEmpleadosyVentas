@@ -10,8 +10,8 @@ public interface IProductService {
 	
 	public List<Product> obtenerProducts();
 	
-	public void eliminarProduct(Long productCode);
+	public void eliminarProduct(long productCode);
 	
-	public Product buscarProduct(Long productCode);
+	public Product buscarProduct(long productCode);
 	
 }

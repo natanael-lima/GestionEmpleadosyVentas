@@ -1,10 +1,15 @@
 package ar.edu.unju.fi.tpf.controller;
 
+
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -33,7 +38,7 @@ public class ProductController {
 		return "form-producto";
 	}
 	
-	//============================ Metodo para mostrar tabla producto ============================
+	//============================ Metodo para MOSTRAR tabla producto ============================
 	@GetMapping("/tablaprod")
 	public String getTablaprod(Model model) {
 		
@@ -42,45 +47,47 @@ public class ProductController {
 		return "tablaProduct";
 	}
 	
-	//============================ Metodo para almacenar los datos del form cargado ============================
+	//============================ Metodo para GUARDAR los datos del form cargado ============================
 	@PostMapping("/form/saveproduct")
-	public ModelAndView saveProduct(@ModelAttribute("product") Product product) {
+	public String saveProduct(@Valid @ModelAttribute("product") Product product,BindingResult result,Model model) {
 		
-			ModelAndView model;
-	
-			ProductLine prodLine = prodLineService.buscarProductLine(product.getProductLine().getProductLineId());
-			product.setProductLine(prodLine);
-			 
-			prodService.guardarProduct(product);
-			model= new ModelAndView("tablaProduct");
-			model.addObject("productos", prodService.obtenerProducts());
-			return model;
+			if(result.hasErrors()) { //Si tiene errores
+				
+				//model.addAttribute("productLines", prodLineService.obtenerProductLines()); //envia la lista de productLines para el select de la linea de productos
+				System.out.println("EXISTIERON ERRORES EN EL FORM");
+				return "form-producto";
+				
+			}
+			 	//No tiene errores
+				
+				/*
+				 * ProductLine prodLine = prodLineService.buscarProductLine(product.getProductLine().getProductLineId()); 
+				 * product.setProductLine(prodLine);
+				 */
+				prodService.guardarProduct(product);
+				model.addAttribute("productos", prodService.obtenerProducts());
+				return "tablaProduct";
 	}
 		
-	
-	/*
-	 * @PostMapping("/form/saveproduct") public ModelAndView
-	 * getsaveProduct(@Valid @ModelAttribute("product") Product product,
-	 * BindingResult result) { ModelAndView model; if(result.hasErrors()) { model=
-	 * new ModelAndView("form-producto"); model.addObject(product); return model; }
-	 * else { prodRepo.save(product); model= new ModelAndView("tablaProduct");
-	 * model.addObject("productos", prodRepo.findAll());
-	 * System.out.println("SE GUARDO CORRECTAMENTE"); return model; }
-	 * 
-	 * }
-	 */
-	
-	/*
-	 * @GetMapping("/form/eliminar/{id}") public ModelAndView
-	 * getEliminarProduct(@PathVariable(value = "id") String param) { ModelAndView
-	 * model = new ModelAndView("tablaProduct"); prodRepo.deleteById(param);
-	 * model.addObject("productos", prodRepo.findAll()); return model; }
-	 * 
-	 * @GetMapping("/form/modificar/{id}") public ModelAndView
-	 * getModificarProduct(@PathVariable(value = "id") String param) { ModelAndView
-	 * model = new ModelAndView("tablaProduct"); Optional<Product> product =
-	 * prodRepo.findById(param); model.addObject("product", product); return model;
-	 * }
-	 */
+	//============================ Metodo para ELIMINAR los datos del form cargado ============================
+	@GetMapping("/form/eliminarProd/{id}") 
+	public ModelAndView getEliminarProduct(@PathVariable(value = "id") long param) { 
 		
+		 ModelAndView model = new ModelAndView("tablaProduct");
+		 prodService.eliminarProduct(param);
+		 model.addObject("productos", prodService.obtenerProducts()); 
+		 return model; 
+	}
+	
+	
+	//============================ Metodo para EDITAR los datos del form cargado ============================
+	@GetMapping("/form/editarProd/{id}")
+	public String getEditarProduct(@PathVariable (value="id")long param, Model model) {
+		
+		Product product = prodService.buscarProduct(param); 
+		model.addAttribute("product", product);
+		
+		return "form-producto";
+	}
+	
 }

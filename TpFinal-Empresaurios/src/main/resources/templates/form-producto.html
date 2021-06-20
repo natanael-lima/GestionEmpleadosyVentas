@@ -24,44 +24,52 @@
 			
 				<form th:action="@{/form/saveproduct}" th:object="${product}" method="post">
 					
-					<!-- <input type="hidden" th:field="*{productCode}"> --> 
+					<input type="hidden" th:field="*{productCode}"> 
+					<!-- <input type="hidden" th:field="*{productLine.productLineId}"> -->
 				
 					<div class="mb-3">
 						<label for="productName" class="form-label">Nombre del Producto</label>
 						<input type="text" class="form-control" id="productName" th:field="*{productName}">
+						<small class="form-text text-danger" th:if="${#fields.hasErrors('productName')}" th:errors="*{productName}"></small>
 					</div>
 					
 					<div class="mb-3">
 						<label for="productScale" class="form-label">productScale</label>
 						<input type="number" class="form-control" id="productScale" th:field="*{productScale}">
+						<small class="form-text text-danger" th:if="${#fields.hasErrors('productScale')}" th:errors="*{productScale}"></small>
 					</div>
 					
 					<div class="mb-3">
 						<label for="productVendor" class="form-label">productVendor</label>
 						<input type="text" class="form-control" id="productVendor" th:field="*{productVendor}">
+						<small class="form-text text-danger" th:if="${#fields.hasErrors('productVendor')}" th:errors="*{productVendor}"></small>
 					</div>
 					
 					<div class="mb-3">
 						<label for="productDescription" class="form-label">productDescription</label>
 						<input type="text" class="form-control" id="productDescription" th:field="*{productDescription}">
+						<small class="form-text text-danger" th:if="${#fields.hasErrors('productDescription')}" th:errors="*{productDescription}"></small>
 					</div>
 					
 					<div class="mb-3">
 						<label for="quantityInStock" class="form-label">quantityInStock</label>
 						<input type="number" class="form-control" id="quantityInStock" th:field="*{quantityInStock}">
+						<small class="form-text text-danger" th:if="${#fields.hasErrors('quantityInStock')}" th:errors="*{quantityInStock}"></small>
 					</div>
 					
 					<div class="mb-3">
 						<label for="buyPrice" class="form-label">buyPrice</label>
 						<input type="number" class="form-control" id="buyPrice" th:field="*{buyPrice}">
+						<small class="form-text text-danger" th:if="${#fields.hasErrors('buyPrice')}" th:errors="*{buyPrice}"></small>
 					</div>
 					
-					<div class="form-group col-xs-12 col-sm-12 col-md-6 col-lg-6 mb-3">
+					<!-- <div class="form-group col-xs-12 col-sm-12 col-md-6 col-lg-6 mb-3">
 						 <label for="producto" class="form-label">Product Line</label>
 						 <select id="producto" th:field="*{productLine}">
 						   	<option th:each="prodLine: ${productLines}" th:value="${prodLine.productLineId}" th:text="${prodLine.textDescription}" th:selected="false">
 						 </select>
-					</div>
+						 <small class="form-text text-danger" th:if="${#fields.hasErrors('productLine')}" th:errors="*{productLine}"></small>
+					</div> -->
 					
 					<div class="form-group col-12"><br>
 						 <button type="submit" style="background: #178C71;" class="btn text-light">Guardar</button>

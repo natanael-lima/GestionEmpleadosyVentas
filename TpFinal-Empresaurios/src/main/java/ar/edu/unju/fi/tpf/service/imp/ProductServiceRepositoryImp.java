@@ -26,13 +26,12 @@ public class ProductServiceRepositoryImp implements IProductService{
 	}
 
 	@Override
-	public Product buscarProduct(Long productCode) {
+	public Product buscarProduct(long productCode) {
 		return productRepo.findById(productCode).orElse(null);
 	}
 
 	@Override
-	public void eliminarProduct(Long productCode) {
-		// TODO Auto-generated method stub
+	public void eliminarProduct(long productCode) {
 		productRepo.deleteById(productCode);
 	}
 

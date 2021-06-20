@@ -25,35 +25,37 @@
 			
 				<div class="table-responsive-sm">	
 				
-		 		<table class="tab2 table table-bordered table-dark ">
+			 		<table class="tab2 table table-bordered table-dark ">
+			 		
+					  <thead>
+					    <tr>
+					    
+					       <th scope="col">productLineId</th>
+			               <th scope="col">textDescription</th>
+			               <th scope="col">htmlDescription</th>
+			               <th scope="col">image</th>
+			               <th scope="col">DownloadImage</th>
+					    </tr>
+					    
+					  </thead>
+					  <tbody>
+					    <tr th:each="pl : ${productosLine}">
+					      <td th:text="${pl.productLineId}"></td>
+			              <td th:text="${pl.textDescription}"></td>
+			              <td th:text="${pl.htmlDescription}"></td>
+			              <td> <img class="img-responsive mx-auto d-block" th:alt="${pl.image}" th:src="@{'/images/' + ${pl.image}}" style="max-width: 45%;"> </td>
+			              
+			              <td><a th:href="@{'/images/' + ${pl.image}}" download="nombre_imagen" class="btn btn-outline-light my-2">Descarga</a></td>
+			
+			              <td><a th:href="@{/form/eliminarProdLine/}+${pl.productLineId}" class="btn btn-light my-2">Eliminar</a></td>
+			              <td><a th:href="@{/form/editarProdLine/}+${pl.productLineId}" class="btn btn-light my-2">Editar</a></td> 
+					    </tr>
+					  
+					  </tbody>
+					</table>
+		 		</div>	
 		 		
-				  <thead>
-				    <tr>
-				    
-				       <th scope="col">productLineId</th>
-		               <th scope="col">textDescription</th>
-		               <th scope="col">htmlDescription</th>
-		               <th scope="col">image</th>
-		               <th scope="col">DownloadImage</th>
-				    </tr>
-				    
-				  </thead>
-				  <tbody>
-				    <tr th:each="pl : ${productosLine}">
-				      <td th:text="${pl.productLineId}"></td>
-		              <td th:text="${pl.textDescription}"></td>
-		              <td th:text="${pl.htmlDescription}"></td>
-		              <td> <img class="img-responsive mx-auto d-block" th:alt="${pl.image}" th:src="@{'/images/' + ${pl.image}}" style="max-width: 45%;"> </td>
-		              
-		              <td><a th:href="@{'/images/' + ${pl.image}}" download="nombre_imagen" class="btn btn-outline-light my-2">Descarga</a></td>
-		
-		               <!-- <td><a th:href="@{/form/eliminar/}+${prod.productCode}" class="btn btn-light my-2">Editar</a></td>
-		               <td><a th:href="@{/form/modificar/}+${prod.productCode}" class="btn btn-light my-2">Eliminar</a></td>  -->
-				    </tr>
-				  
-				  </tbody>
-				</table>
-		 </div>	
+		 		<a style="background: #178C71;" th:href="@{/form/productline}" class="btn text-light">Agregar otro</a>
 
 			</div>
 		</div>

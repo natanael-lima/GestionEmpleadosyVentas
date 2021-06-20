@@ -25,41 +25,43 @@
 			
 				<div class="table-responsive-sm">	
 				
-		 		<table class="tab2 table table-bordered table-dark ">
-		 		
-				  <thead>
-				    <tr>
-				    
-				       <th scope="col">#</th>
-				       <th scope="col">productName</th>
-		               <th scope="col">productScale</th>
-		               <th scope="col">productVendor</th>
-		               <th scope="col">productDescription</th>
-		               <th scope="col">quantityInStock</th>
-		               <th scope="col">buyPrice</th>
-					   <th scope="col">ProductLine</th>
-				    </tr>
-				    
-				  </thead>
-				  <tbody>
-				    <tr th:each="prod : ${productos}">
-				      <td th:text="${prod.productCode}"></td>
-				      <td th:text="${prod.productName}"></td>
-		              <td th:text="${prod.productScale}"></td>
-		              <td th:text="${prod.productVendor}"></td>
-		              <td th:text="${prod.productDescription}"></td>
-		              <td th:text="${prod.quantityInStock}"></td>
-		              <td th:text="${prod.buyPrice}"></td>
-		              <td th:text="${prod.productLine.textDescription}"></td>
-		
-		               <!-- <td><a th:href="@{/form/eliminar/}+${prod.productCode}" class="btn btn-light my-2">Editar</a></td>
-		               <td><a th:href="@{/form/modificar/}+${prod.productCode}" class="btn btn-light my-2">Eliminar</a></td>  -->
-				    </tr>
-				  
-				  </tbody>
-				</table>
-		 </div>	
-
+			 		<table class="tab2 table table-bordered table-dark ">
+			 		
+					  <thead>
+					    <tr>
+					    
+					       <th scope="col">#</th>
+					       <th scope="col">productName</th>
+			               <th scope="col">productScale</th>
+			               <th scope="col">productVendor</th>
+			               <th scope="col">productDescription</th>
+			               <th scope="col">quantityInStock</th>
+			               <th scope="col">buyPrice</th>
+						   <th scope="col">ProductLine</th>
+					    </tr>
+					    
+					  </thead>
+					  <tbody>
+					    <tr th:each="prod : ${productos}">
+					      <td th:text="${prod.productCode}"></td>
+					      <td th:text="${prod.productName}"></td>
+			              <td th:text="${prod.productScale}"></td>
+			              <td th:text="${prod.productVendor}"></td>
+			              <td th:text="${prod.productDescription}"></td>
+			              <td th:text="${prod.quantityInStock}"></td>
+			              <td th:text="${prod.buyPrice}"></td>
+			              <!-- <td th:text="${prod.productLine.textDescription}"></td> -->
+			
+			              <td><a th:href="@{/form/eliminarProd/}+${prod.productCode}" class="btn btn-light my-2">Eliminar</a></td>
+			              <td><a th:href="@{/form/editarProd/}+${prod.productCode}" class="btn btn-light my-2">Editar</a></td>
+					    </tr>
+					  
+					  </tbody>
+					</table>
+		 		</div>	
+				
+				<a style="background: #178C71;" th:href="@{/form/product}" class="btn text-light">Agregar otro</a>
+				
 			</div>
 		</div>
 	</div>
