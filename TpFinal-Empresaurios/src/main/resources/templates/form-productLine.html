@@ -27,16 +27,18 @@
 			
 				<form th:action="@{/form/saveproductline}" th:object="${productLine}" method="post" enctype="multipart/form-data">
 					
-					<!-- <input type="hidden" th:field="*{productCode}"> --> 
+					<input type="hidden" th:field="*{productLineId}"> 
 				
 					<div class="mb-3">
 						<label for="textDescription" class="form-label">textDescription</label>
 						<input type="text" class="form-control" id="textDescription" th:field="*{textDescription}">
+						<small class="form-text text-danger" th:if="${#fields.hasErrors('textDescription')}" th:errors="*{textDescription}"></small>
 					</div>
 					
 					<div class="mb-3">
 						<label for="htmlDescription" class="form-label">htmlDescription</label>
 						<input type="text" class="form-control" id="htmlDescription" th:field="*{htmlDescription}">
+						<small class="form-text text-danger" th:if="${#fields.hasErrors('htmlDescription')}" th:errors="*{htmlDescription}"></small>
 					</div>
 					
 					<div class="mb-3">
@@ -55,7 +57,7 @@
 	</div>
 
 
-<!--    Inicio Contendeor 2 -->
+	<!--    Inicio Contendeor 2 -->
 
 	<div class="card text-center">
 		<div class="card-header">Grupo Empresaurios</div>
@@ -69,6 +71,7 @@
 		<div class="card-footer text-muted">Programacion Visual 2021</div>
 	</div>
 	<!--    Fin Contendeor 2 -->
+	
 	<!--  Footer -->
 	<div th:insert="layouts/footer :: foot"></div>
 
