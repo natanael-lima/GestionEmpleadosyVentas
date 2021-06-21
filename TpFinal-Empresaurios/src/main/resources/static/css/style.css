@@ -1,1 +1,38 @@
 @charset "ISO-8859-1";
+
+.eliminar{
+	color:#FFE4E2;
+	transition: all 1s ease;
+}
+.eliminar:hover{
+  color:#FF0F00;
+  transition: all 1s ease;
+}
+
+.editar{
+	color:#E2F5FF;
+	transition: all 1s ease;
+}
+.editar:hover{
+  color:#00AFFF;
+  transition: all 1s ease;
+  
+}
+
+.download{
+	color:#D4FFC2;
+	transition: all 1s ease;
+}
+.download:hover{
+  color:#2ED413;
+  transition: all 1s ease;
+}
+
+.foot ul li a{
+	color:white;
+}
+
+.foot ul li a:hover{
+	color:#178C71;
+	transition: all 1s ease;
+}
