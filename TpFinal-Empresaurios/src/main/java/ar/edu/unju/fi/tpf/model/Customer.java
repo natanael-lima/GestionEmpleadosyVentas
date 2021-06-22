@@ -33,7 +33,7 @@ public class Customer {
 	private String customerName;
 	
 	@NotNull(message = "Debes ingresar phone")
-	@Min(value=3999999, message="Error")
+	@Min(value=3000000, message="Error")
 	@Max(value=5999999, message="Error")
 	@Column(name="cust_phone")
 	private long phone;
