@@ -13,7 +13,7 @@ import ar.edu.unju.fi.tpf.service.IProductService;
 public class ProductServiceRepositoryImp implements IProductService{
 	
 	@Autowired
-	IProductRepository productRepo;
+	private IProductRepository productRepo;
 
 	@Override
 	public void guardarProduct(Product product) {

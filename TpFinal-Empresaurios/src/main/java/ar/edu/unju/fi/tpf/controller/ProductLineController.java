@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.List;
 
 import javax.validation.Valid;
 
@@ -19,8 +20,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
+import ar.edu.unju.fi.tpf.model.Product;
 import ar.edu.unju.fi.tpf.model.ProductLine;
 import ar.edu.unju.fi.tpf.service.IProductLineService;
+import ar.edu.unju.fi.tpf.service.IProductService;
 
 @Controller
 public class ProductLineController {
@@ -30,7 +33,12 @@ public class ProductLineController {
 	ProductLine productLine;
 	
 	@Autowired
+	 IProductService prodService;
+	
+	@Autowired
 	IProductLineService prodLineService;
+	
+	
 	
 	//============================ Metodo para ingresar al form productLine ============================
 	@GetMapping("/form/productline")
@@ -91,6 +99,18 @@ public class ProductLineController {
 	@GetMapping("/form/eliminarProdLine/{id}")
 	public String getEliminarProdLine(@PathVariable(name="id")long param, Model model) {
 		
+		List<Product> aux = prodService.obtenerProducts(); // eliminar la relacion product & productline
+		for(Product prod: aux){
+			if((prod.getProductLine()) !=null) {
+				if(prod.getProductLine().getProductLineId() == param ) {
+					
+					prod.setProductLine(null);	
+					prodService.guardarProduct(prod);
+				}
+			}
+
+		}
+
 		prodLineService.eliminarProductLine(param);
 		model.addAttribute("productosLine", prodLineService.obtenerProductLines());
 		

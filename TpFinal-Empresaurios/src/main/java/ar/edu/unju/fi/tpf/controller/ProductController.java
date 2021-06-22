@@ -72,7 +72,7 @@ public class ProductController {
 	//============================ Metodo para ELIMINAR los datos del form cargado ============================
 	@GetMapping("/form/eliminarProd/{id}") 
 	public ModelAndView getEliminarProduct(@PathVariable(value = "id") long param) { 
-		
+		 
 		 ModelAndView model = new ModelAndView("tablaProduct");
 		 prodService.eliminarProduct(param);
 		 model.addObject("productos", prodService.obtenerProducts()); 
@@ -83,10 +83,11 @@ public class ProductController {
 	//============================ Metodo para EDITAR los datos del form cargado ============================
 	@GetMapping("/form/editarProd/{id}")
 	public String getEditarProduct(@PathVariable (value="id")long param, Model model) {
+	    
+		model.addAttribute("product", prodService.buscarProduct(param));
 		
-		Product product = prodService.buscarProduct(param); 
-		model.addAttribute("product", product);
-		
+		System.out.println("encontre:-------------------------------------------------------------"+product.getProductName());
+		model.addAttribute("productLines",prodLineService.obtenerProductLines());
 		return "form-producto";
 	}
 	

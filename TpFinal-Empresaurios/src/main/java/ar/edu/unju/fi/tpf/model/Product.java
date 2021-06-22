@@ -56,7 +56,7 @@ public class Product {
 	
 	@Column(name="prod_price")
 	@NotNull(message = "Campo Obligatorio")
-	@Min(value=1, message="Numero no valido")
+	@Min(value=350000, message="Numero no valido")
 	private double buyPrice;
 	
 	

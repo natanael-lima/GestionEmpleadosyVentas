@@ -33,8 +33,8 @@ public class Office {
 	private String city;
 	
 	@NotNull(message = "Debes ingresar phone")
-	@Min(value=1000000, message="Error")
-	@Max(value=1000000000, message="Error")
+	@Min(value=3999999, message="Error")
+	@Max(value=5999999, message="Error")
 	@Column(name="off_phone")
 	private long phone;
 	
@@ -51,8 +51,8 @@ public class Office {
 	private String country;
 	
 	@NotNull(message = "Debes ingresar postal")
-	@Min(value=1000, message="Error")
-	@Max(value=10000, message="Error")
+	@Min(value=999, message="Error")
+	@Max(value=9999, message="Error")
 	@Column(name="off_postalCode")
 	private long postalCode;
 	

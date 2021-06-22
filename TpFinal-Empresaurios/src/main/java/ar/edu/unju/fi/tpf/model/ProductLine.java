@@ -1,13 +1,11 @@
 package ar.edu.unju.fi.tpf.model;
 
-import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotEmpty;
 
@@ -35,9 +33,11 @@ public class ProductLine {
 	@Column(name="prodL_image")
 	private String image; 
 	
-	//Relacion producto a linea de producto - uno a muchos
-	@OneToMany(mappedBy = "productLine")
-	private List<Product> product;
+	/*
+	 * //Relacion producto a linea de producto - uno a muchos //Crear error la bidireccional
+	 * 
+	 * @OneToMany(mappedBy = "productLine") private List<Product> product;
+	 */
 		
 	
 	public ProductLine() {
@@ -76,18 +76,10 @@ public class ProductLine {
 		this.image = image;
 	}
 
-	public List<Product> getProduct() {
-		return product;
-	}
-
-	public void setProduct(List<Product> product) {
-		this.product = product;
-	}
-
 	@Override
 	public String toString() {
-		return "ProductLine [productLineId=" + productLineId + ", textDescription=" + textDescription
-				+ ", htmlDescription=" + htmlDescription + ", image=" + image + ", product=" + product + "]";
+		return textDescription;
 	}
+
 	
 }
