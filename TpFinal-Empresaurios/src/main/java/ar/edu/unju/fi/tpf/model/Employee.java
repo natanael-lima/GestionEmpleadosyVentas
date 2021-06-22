@@ -12,6 +12,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Size;
 
 import org.springframework.stereotype.Component;
 
@@ -24,15 +26,22 @@ public class Employee {
 	@Column(name="emp_number")
 	private long employeeNumber;
 	
+	//@NotEmpty(message = "Debes ingresar tu apellido")
+	//@Size(min = 3,max = 50, message="Minimo 3 y Maximo 50 caracteres")
 	@Column(name="emp_lastName")
 	private String lastName;
 	
+	//@NotEmpty(message = "Debes ingresar tu nombre")
+	//@Size(min = 3,max = 50, message="Minimo 3 y Maximo 50 caracteres")
 	@Column(name="emp_firstName")
 	private String firstName;
 	
+	//@NotEmpty(message = "Debes ingresar tu email")
+	//@Size(min = 3,max = 50, message="Minimo 3 y Maximo 50 caracteres")
 	@Column(name="emp_email")
 	private String email;
 	
+	//@NotEmpty(message = "Debes ingresar tu titulo")
 	@Column(name="emp_jobTitle")
 	private String jobTitle;
 	
