@@ -5,6 +5,7 @@
 		<meta charset="utf-8">
 		<meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1">
 		<link rel="icon" href="img/dinow.ico">
+		<link rel="stylesheet" href="/css/style.css">
 		<!-- Bootstrap CSS -->
 		<link rel="stylesheet" href="/webjars/bootstrap/4.6.0/css/bootstrap.min.css">
 		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -25,35 +26,40 @@
 			
 				<div class="table-responsive-sm">	
 				
-		 		<table class="tab2 table table-bordered table-dark ">
+			 		<table class="tab2 table table-bordered table-dark ">
+			 		
+					  <thead>
+					    <tr>
+					    
+					       <th scope="col">productLineId</th>
+			               <th scope="col">textDescription</th>
+			               <th scope="col">htmlDescription</th>
+			               <th scope="col">image</th>
+			               <th scope="col">Accion</th>
+			               <th scope="col">Accion</th>
+			               <th scope="col">Accion</th>
+					    </tr>
+					   
+					  </thead>
+					  <tbody>
+					    <tr th:each="pl : ${productosLine}">
+					      <td th:text="${pl.productLineId}"></td>
+			              <td th:text="${pl.textDescription}"></td>
+			              <td th:text="${pl.htmlDescription}"></td>
+			              <td> <img class="img-responsive mx-auto d-block" th:alt="${pl.image}" th:src="@{'/images/' + ${pl.image}}" style="max-width: 45%;"> </td>
+			              
+			              <td><a class="download" th:href="@{'/images/' + ${pl.image}}" download="nombre_imagen"> <i class="fa fa-cloud-download fa-2x ml-1 mr-1" aria-hidden="true"></i></a></td> 
+			              <td><a class="editar" th:href="@{/form/editarProdLine/}+${pl.productLineId}"> <i  class="fa fa-pencil fa-2x ml-1 mr-1" aria-hidden="true" ></i></a></td>
+		                  <td><a class="eliminar" th:href="@{/form/eliminarProdLine/}+${pl.productLineId}"> <i class="fa fa-trash fa-2x ml-1 mr-1" aria-hidden="true"></i></a></td>
+			              
+			              
+					    </tr>
+					  
+					  </tbody>
+					</table>
+		 		</div>	
 		 		
-				  <thead>
-				    <tr>
-				    
-				       <th scope="col">productLineId</th>
-		               <th scope="col">textDescription</th>
-		               <th scope="col">htmlDescription</th>
-		               <th scope="col">image</th>
-		               <th scope="col">DownloadImage</th>
-				    </tr>
-				    
-				  </thead>
-				  <tbody>
-				    <tr th:each="pl : ${productosLine}">
-				      <td th:text="${pl.productLineId}"></td>
-		              <td th:text="${pl.textDescription}"></td>
-		              <td th:text="${pl.htmlDescription}"></td>
-		              <td> <img class="img-responsive mx-auto d-block" th:alt="${pl.image}" th:src="@{'/images/' + ${pl.image}}" style="max-width: 45%;"> </td>
-		              
-		              <td><a th:href="@{'/images/' + ${pl.image}}" download="nombre_imagen" class="btn btn-success my-2">Descarga</a></td>
-		
-		               <!-- <td><a th:href="@{/form/eliminar/}+${prod.productCode}" class="btn btn-light my-2">Editar</a></td>
-		               <td><a th:href="@{/form/modificar/}+${prod.productCode}" class="btn btn-light my-2">Eliminar</a></td>  -->
-				    </tr>
-				  
-				  </tbody>
-				</table>
-		 </div>	
+		 		<a style="background: #178C71;" th:href="@{/form/productline}" class="btn text-light">Agregar otro</a>
 
 			</div>
 		</div>

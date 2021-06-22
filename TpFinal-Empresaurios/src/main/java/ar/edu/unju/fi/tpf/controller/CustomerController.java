@@ -52,7 +52,7 @@ public class CustomerController {
 			}	
 			
 			customerService.guardarCliente(customer);
-			model= new ModelAndView("tablaCustomer");
+			model= new ModelAndView("index");
 			model.addObject("clientes",customerService.obtenerClientes());
 			return model;
 	}
@@ -63,7 +63,7 @@ public class CustomerController {
 		  
 	  ModelAndView model = new ModelAndView("tablaCustomer");
 	  customerService.eliminarCliente(param);
-	  model.addObject("offices", customerService.obtenerClientes()); 
+	  model.addObject("clientes", customerService.obtenerClientes()); 
 	  return model; 
 	  }
 	  

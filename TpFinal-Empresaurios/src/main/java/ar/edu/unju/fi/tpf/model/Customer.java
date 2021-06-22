@@ -33,8 +33,8 @@ public class Customer {
 	private String customerName;
 	
 	@NotNull(message = "Debes ingresar phone")
-	@Min(value=1000000, message="Error")
-	@Max(value=1000000000, message="Error")
+	@Min(value=3999999, message="Error")
+	@Max(value=5999999, message="Error")
 	@Column(name="cust_phone")
 	private long phone;
 	
@@ -51,8 +51,8 @@ public class Customer {
 	private String state;
 	
 	@NotNull(message = "Debes ingresar postal")
-	@Min(value=1000, message="Error")
-	@Max(value=10000, message="Error")
+	@Min(value=999, message="Error")
+	@Max(value=9999, message="Error")
 	@Column(name="cust_postalCode")
 	private long postalCode;
 	
@@ -67,8 +67,8 @@ public class Customer {
 	private Employee employee;
 	
 	@NotNull(message = "Debes ingresar creditLimit")
-	@Min(value=100, message="Error")
-	@Max(value=10000000, message="Error")
+	@Min(value=100000, message="Error")
+	@Max(value=999999999, message="Error")
 	@Column(name="cust_creditLimit")
 	private long creditLimit;
 

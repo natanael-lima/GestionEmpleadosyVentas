@@ -5,6 +5,7 @@
 		<meta charset="utf-8">
 		<meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1">
 		<link rel="icon" href="img/dinow.ico">
+		<link rel="stylesheet" href="/css/style.css">
 		<!-- Bootstrap CSS -->
 		<link rel="stylesheet" href="/webjars/bootstrap/4.6.0/css/bootstrap.min.css">
 		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -52,14 +53,15 @@
 		              <td th:text="${off.country}"></td>
 		              <td th:text="${off.postalCode}"></td>
 		
-		              <td><a th:href="@{/form/modificarOffice/}+${off.officeCode}"  class="btn btn-info text-light my-2">Editar</a></td>
-		              <td><a th:href="@{/form/eliminarOffice/}+${off.officeCode}" class="btn btn-danger text-light my-2">Eliminar</a></td>
+		        
+		              <td><a class="editar" th:href="@{/form/modificarOffice/}+${off.officeCode}"> <i  class="fa fa-pencil fa-2x ml-1 mr-1" aria-hidden="true" ></i></a></td>
+		              <td><a class="eliminar" th:href="@{/form/eliminarOffice/}+${off.officeCode}"> <i class="fa fa-trash fa-2x ml-1 mr-1" aria-hidden="true"></i></a></td>
 				    </tr>
 				  
 				  </tbody>
 				</table>
-		 </div>	
-
+		   </div>	
+					<a style="background: #178C71;" th:href="@{/form/productLine}" class="btn text-light">Agregar otro</a>
 			</div>
 		</div>
 	</div>

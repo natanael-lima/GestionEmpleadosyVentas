@@ -1,1 +1,89 @@
-@charset "ISO-8859-1";
+
+/*//////////////////////////////////////////////////////////////////
+[ FONT ]*/
+
+@font-face {
+  font-family: Poppins-Regular;
+  src: url('../fonts/poppins/Poppins-Regular.ttf'); 
+}
+
+@font-face {
+  font-family: Poppins-Medium;
+  src: url('../fonts/poppins/Poppins-Medium.ttf'); 
+}
+
+@font-face {
+  font-family: Poppins-Bold;
+  src: url('../fonts/poppins/Poppins-Bold.ttf'); 
+}
+
+@font-face {
+  font-family: Poppins-SemiBold;
+  src: url('../fonts/poppins/Poppins-SemiBold.ttf'); 
+}
+
+
+
+*{
+	font-family: Poppins-Regular;
+}
+
+/*Iconos de eliminar editar y descargar*/
+.eliminar{
+	color:#FC9999;
+	transition: all 1s ease;
+}
+.eliminar:hover{
+  color:#FF0F00;
+  transition: all 1s ease;
+}
+
+.editar{
+	color:#9ED4FF;
+	transition: all 1s ease;
+}
+.editar:hover{
+  color:#008DFF;
+  transition: all 1s ease;
+  
+}
+
+.download{
+	color:#ACFC99;
+	transition: all 1s ease;
+}
+.download:hover{
+  color:#2ED413;
+  transition: all 1s ease;
+}
+/*Iconos de footer efecto*/
+.foot ul li a{
+	color:white;
+}
+
+.foot ul li a:hover{
+	color:#178C71;
+	transition: all 1s ease;
+}
+
+a{
+	font-size: 16px;
+    color: #555555;
+}
+
+.alert-validate::after {
+    content: "\f06a";
+    font-family: FontAwesome;
+    display: block;
+    position: absolute;
+    color: #c80000;
+    font-size: 15px;
+    top: 50%;
+    -webkit-transform: translateY(-50%);
+    -moz-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    -o-transform: translateY(-50%);
+    transform: translateY(-50%);
+    right: 8px;
+}
+
