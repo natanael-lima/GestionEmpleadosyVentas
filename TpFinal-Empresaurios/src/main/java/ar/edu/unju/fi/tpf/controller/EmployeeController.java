@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -41,7 +42,6 @@ public class EmployeeController {
 		public String getTablaEmployee(Model model) {
 			
 			model.addAttribute("employees",employeeService.obtenerEmployees() );
-			model.addAttribute("office",officeService.obtenerOffice() );
 			return "tablaEmployee";
 		}
 		
@@ -50,7 +50,27 @@ public class EmployeeController {
 		public ModelAndView saveEmployee(@ModelAttribute("employee") Employee employee) {
 			    ModelAndView model;
 				employeeService.guardarEmployee(employee);
-				model= new ModelAndView("tablaEmployee");
+				model= new ModelAndView("index");
 				return model;
+		}
+	
+	//============================ Metodo para EDITAR los datos del form cargado ============================
+		@GetMapping("/form/editarEmployee/{id}")
+		public String getEditarProduct(@PathVariable (value="id")long param, Model model) {
+		    
+			model.addAttribute("employee", employeeService.buscarEmployee(param));
+			model.addAttribute("office",officeService.obtenerOffice());
+			model.addAttribute("employees",employeeService.obtenerEmployees() );
+			return "form-empleado";
+		}
+	
+	//============================ Metodo para ELIMINAR los datos del form cargado ============================
+		@GetMapping("/form/eliminarEmployee/{id}") 
+		public ModelAndView getEliminarProduct(@PathVariable(value = "id") long param) { 
+			 
+			 ModelAndView model = new ModelAndView("tablaEmployee");
+			 employeeService.elimarEmployee(param);
+			 model.addObject("employees",employeeService.obtenerEmployees() );
+			 return model; 
 		}
 }
