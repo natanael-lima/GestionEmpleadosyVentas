@@ -2,9 +2,12 @@ package ar.edu.unju.fi.tpf.controller;
 
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -47,11 +50,14 @@ public class EmployeeController {
 		
 	//============================ Metodo para almacenar los datos del form cargado ============================
 		@PostMapping("/form/saveemployee")
-		public ModelAndView saveEmployee(@ModelAttribute("employee") Employee employee) {
-			    ModelAndView model;
+		public String saveEmployee(@Valid @ModelAttribute("employee") Employee employee, BindingResult result,Model model) {
+			if(result.hasErrors()) {
+				System.out.println("EXISTIERON ERRORES EN EL FORM");
+				return "form-empleado";
+			}
 				employeeService.guardarEmployee(employee);
-				model= new ModelAndView("index");
-				return model;
+				model.addAttribute("employeed", employeeService.obtenerEmployees());
+				return "index";
 		}
 	
 	//============================ Metodo para EDITAR los datos del form cargado ============================
