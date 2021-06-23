@@ -80,19 +80,20 @@
 						<input type="number" class="form-control" id="quantityOrdered" th:field="*{orderDetail.quantityOrdered}">
 					</div>
 					
-					<div class="mb-3">
-						<label for="priceEach" class="form-label">Precio de cada uno</label>
-						<input type="number" class="form-control" id="priceEach" th:field="*{orderDetail.priceEach}">
-					</div>
+					
+					
 					
 					<div class="mb-3">
 						<label for="orderLineNumber" class="form-label">Numero de Orden</label>
 						<input type="number" class="form-control" id="orderLineNumber" th:field="*{orderDetail.orderLineNumber}">
 					</div>
-					
-					
-					<div class="form-group col-12"><br>
+					<div class="container col-12">
+					<div class="form-group col-8">
+						 <h4>Termina tu compra completando el pago: </h4>
+					</div>
+					<div class="form-group col-4">
 						 <button type="submit" style="background: #178C71;" class="btn text-light">Guardar</button>
+					</div>
 					</div>
 				
 				</form>
