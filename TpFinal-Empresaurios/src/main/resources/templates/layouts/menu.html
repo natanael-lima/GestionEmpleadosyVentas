@@ -41,6 +41,9 @@
 				<li>
 					<a class=" btn btn-outline-light  ml-3" href="/login">Iniciar Sesion</a>
 				</li>
+						<form th:action="@{/logout}" method="POST">
+							<button type="submit" class="btn btn-primary mt-3">Salir</button>
+						</form>
 				</ul>
 			</div>
 		</nav>
