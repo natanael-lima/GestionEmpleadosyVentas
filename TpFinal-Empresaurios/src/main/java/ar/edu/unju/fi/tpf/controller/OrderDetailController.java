@@ -11,6 +11,7 @@ import ar.edu.unju.fi.tpf.model.Customer;
 import ar.edu.unju.fi.tpf.model.Employee;
 import ar.edu.unju.fi.tpf.model.Order;
 import ar.edu.unju.fi.tpf.model.OrderDetail;
+import ar.edu.unju.fi.tpf.model.Payment;
 import ar.edu.unju.fi.tpf.service.ICustomerService;
 import ar.edu.unju.fi.tpf.service.IEmployeeService;
 import ar.edu.unju.fi.tpf.service.IOrderDetailService;
@@ -23,6 +24,8 @@ public class OrderDetailController {
 	OrderDetail orderDetail;
 	@Autowired
 	Order order;
+	@Autowired
+	Payment payment;
 	
 	@Autowired
 	IOrderDetailService orderDetailService;
@@ -58,10 +61,18 @@ public class OrderDetailController {
 		//Setear empleado al cliente que nos atendio
 		   Employee employee = employeeService.buscarEmployee(orderDetail.getOrderId().getOrderNumber().getCustomerNumber().getEmployee().getEmployeeNumber());
 		   Customer customer= customerService.buscarCliente(orderDetail.getOrderId().getOrderNumber().getCustomerNumber().getCustomerNumber());
-		   customer.setEmployee(employee);
-		   customerService.guardarCliente(customer);
+		
+		  customer.setEmployee(employee);
+		  customerService.guardarCliente(customer);
 		   
+		orderDetail.setPriceEach(orderDetail.getOrderId().getProductCode().getBuyPrice());  
 		orderDetailService.guardarOrderDetail(orderDetail);
-		return "/tablaOrderDetail";
+		
+		
+		model.addAttribute(payment);
+		OrderDetail orden=orderDetailService.obtenerOrderDetails().get(orderDetailService.obtenerOrderDetails().size()-1);
+		model.addAttribute("amount",orden.getPriceEach()*orden.getQuantityOrdered());
+		model.addAttribute("customer",orden.getOrderId().getOrderNumber().getCustomerNumber());
+		return "form-payment";
 	}
 }
