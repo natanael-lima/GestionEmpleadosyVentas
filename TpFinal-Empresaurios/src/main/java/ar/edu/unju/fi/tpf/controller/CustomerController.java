@@ -26,7 +26,7 @@ public class CustomerController {
 
 	//============================ Metodo para ingresar al formulario ============================
 	@GetMapping("/form/customer")
-	public String getFormCust(Model model) {
+	public String getFormCust(Model model){
 		model.addAttribute(customer);
 		return "form-cliente";
 	}

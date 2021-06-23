@@ -15,7 +15,11 @@
 	<!--     Inicio Header -->
 	<div th:insert="layouts/header :: header"></div>
 	<!--    Fin Header -->
-
+	
+	<form th:action="@{/logout}" method="POST">
+		<button type="submit" class="btn btn-primary mt-3">Salir</button>
+	</form>
+	
 	<!--    Inicio Contendeor 1 -->
 	<div class="contenedor">
 		<div class="row m-0">
