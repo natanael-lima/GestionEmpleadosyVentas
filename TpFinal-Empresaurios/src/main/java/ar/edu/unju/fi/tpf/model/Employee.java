@@ -46,6 +46,10 @@ public class Employee {
 	@Column(name="emp_jobTitle")
 	private String jobTitle;
 	
+	//@OneToOne(cascade=CascadeType.ALL)
+	//@JoinColumn(name="usu_employee")
+	//private Usuario usuario;
+	
 	//Relacion de empleado a empleado- mucho a uno
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name="reports_to")

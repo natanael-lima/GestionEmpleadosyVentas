@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://thymeleaf.org">
 <head>
 	<title>Empresaurios</title>
 	<meta charset="UTF-8">
@@ -37,8 +37,10 @@
 						Login Empresaurios
 					</span>
 				</div>
-
-				<form class="login100-form validate-form">
+				
+				<div th:if="${param.error}" class="alert alert-danger">Credenciales Incorrectas</div>
+			
+				<form th:action="@{/login-post}" method="POST" class="login100-form validate-form">
 					<div class="wrap-input100 validate-input m-b-26" data-validate="Username is required">
 						<span class="label-input100">Usuario</span>
 						<input class="input100" type="text" name="username" placeholder="Ingresar usuario">
@@ -47,25 +49,24 @@
 
 					<div class="wrap-input100 validate-input m-b-18" data-validate = "Password is required">
 						<span class="label-input100">Password</span>
-						<input class="input100" type="password" name="pass" placeholder="Ingresar password">
+						<input class="input100" type="password" name="password" placeholder="Ingresar password">
 						<span class="focus-input100"></span>
 					</div>
 
-					<div class="flex-sb-m w-full p-b-30">
-						
-
-						<div>
-							<a href="#" class="txt1">
-								Olvidaste tu password?
-							</a>
-						</div>
-					</div>
-
 					<div class="container-login100-form-btn">
-						<button class="login100-form-btn p-1">
+						<button type="submit" class="login100-form-btn p-1">
 							Iniciar Sesion
 						</button>
 					</div>
+					
+					<div class="flex-sb-m w-full p-b-30">
+						<div>
+							<a href="/form/registro" class="txt1">
+								Registrar
+							</a>
+						</div>
+					</div>
+					
 				</form>
 			</div>
 		</div>

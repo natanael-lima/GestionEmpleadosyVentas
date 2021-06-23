@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org">
+	<head>
+		<!-- Required meta tags -->
+		<meta charset="utf-8">
+		<meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1">
+		<link rel="icon" href="img/dinow.ico">
+		<link rel="stylesheet" href="/css/style.css">
+		<!-- Bootstrap CSS -->
+		<link rel="stylesheet" href="/webjars/bootstrap/4.6.0/css/bootstrap.min.css">
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+		<title>Empresaurios</title>
+	</head>
+<body>
+	
+
+	<!--    Inicio Contendeor 1 -->
+	
+	<div class="container">
+		<div class="row m-0 p-5">
+			<!--    Inicio Section Form -->
+			<div class="col-12 col-sm-12 col-md-9 col-lg-9 bg-light p-3">
+			
+				
+			
+				<form th:action="@{/form/registro}" th:object="${usuario}" method="POST">
+					
+					<div class="mb-3">
+						<label for="nombreU" class="form-label">Nombre de Usuario</label>
+						<input type="text" class="form-control" id="nombreU" th:field="*{nombreU}">
+						<small class="form-text text-danger" th:if="${#fields.hasErrors('nombreU')}" th:errors="*{nombreU}"></small>
+					</div>
+					
+					<div class="mb-3">
+						<label for="pass" class="form-label">Contraseña</label>
+						<input type="password" class="form-control" id="pass" th:field="*{pass}">
+						<small class="form-text text-danger" th:if="${#fields.hasErrors('pass')}" th:errors="*{pass}"></small>
+					</div>
+					
+					<div class="mb-3">
+						<label for="email" class="form-label">Email</label>
+						<input type="email" class="form-control" id="email" th:field="*{email}">
+						<small class="form-text text-danger" th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></small>
+					</div>
+					
+					
+					<div class="form-group col-12"><br>
+						 <button type="submit" style="background: #178C71;" class="btn text-light">Registrar</button>
+					</div>
+				
+				</form>
+
+			</div>
+		</div>
+	</div>
+
+	<!-- JavaScript  Jquery Popper and Bootstrap JS -->
+	<script src="/webjars/jquery/3.5.1/jquery.slim.min.js"></script>
+	<script src="/webjars/popper.js/1.16.1/dist/popper.min.js"></script>
+	<script src="/webjars/bootstrap/4.6.0/js/bootstrap.min.js"></script>
+</body>
+</html>
