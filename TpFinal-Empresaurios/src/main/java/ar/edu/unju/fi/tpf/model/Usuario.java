@@ -6,6 +6,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
@@ -22,18 +23,19 @@ public class Usuario {
 	private long id;
 	
 	
-	//@NotEmpty(message="Campo obligatorio")
-	//@Size(min=2, max=20, message="El nombre debe tener entre 6 y 20 caracteres")
+	@NotEmpty(message="Campo obligatorio")
+	@Size(min=2, max=20, message="El nombre debe tener entre 2 y 20 caracteres")
 	@Column(name="usu_nombreu")
 	private String nombreU;
 	
-	//@NotBlank(message="Campo obligatorio")
-	//@Size(min=2,message="La contraseña debe ser de 8 caracteres o mas")
+	@NotBlank(message="Campo obligatorio")
+	@Size(min=2,message="La contraseña debe ser de 8 caracteres o mas")
 	@Column(name="usu_pass")
 	private String pass;
 	
-	@Column(name="usu_rol")
-	private String rol;
+	@Column(name="usu_email")
+	@Email(message="Campo obligatorio")
+	private String email;
 	
 	//@OneToOne(mappedBy = "employee",fetch = FetchType.LAZY)
 	//private Employee employee;
@@ -66,19 +68,20 @@ public class Usuario {
 		this.pass = pass;
 	}
 
-	public String getRol() {
-		return rol;
+	public String getEmail() {
+		return email;
 	}
 
-	public void setRol(String rol) {
-		this.rol = rol;
+	public void setEmail(String email) {
+		this.email = email;
 	}
 
 	@Override
 	public String toString() {
-		return "Usuario [id=" + id + ", nombreU=" + nombreU + ", pass=" + pass + ", rol=" + rol + "]";
+		return "Usuario [id=" + id + ", nombreU=" + nombreU + ", pass=" + pass + ", email=" + email + "]";
 	}
 
+	
 	
 		
 	

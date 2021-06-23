@@ -21,25 +21,27 @@
 			<!--    Inicio Section Form -->
 			<div class="col-12 col-sm-12 col-md-9 col-lg-9 bg-light p-3">
 			
-				<form th:action="@{/form/saveuser}" th:object="${usuario}" method="POST">
+				
+			
+				<form th:action="@{/form/registro}" th:object="${usuario}" method="POST">
 					
 					<div class="mb-3">
 						<label for="nombreU" class="form-label">Nombre de Usuario</label>
 						<input type="text" class="form-control" id="nombreU" th:field="*{nombreU}">
-						<!-- <small class="form-text text-danger" th:if="${#fields.hasErrors('nombreU')}" th:errors="*{nombreU}"></small> -->
+						<small class="form-text text-danger" th:if="${#fields.hasErrors('nombreU')}" th:errors="*{nombreU}"></small>
 					</div>
 					
 					<div class="mb-3">
 						<label for="pass" class="form-label">Contraseña</label>
-						<input type="text" class="form-control" id="pass" th:field="*{pass}">
-						<!-- <small class="form-text text-danger" th:if="${#fields.hasErrors('pass')}" th:errors="*{pass}"></small> -->
+						<input type="password" class="form-control" id="pass" th:field="*{pass}">
+						<small class="form-text text-danger" th:if="${#fields.hasErrors('pass')}" th:errors="*{pass}"></small>
 					</div>
 					
-					<!-- <div class="mb-3">
-						<label for="rol" class="form-label">Rol</label>
-						<input type="text" class="form-control" id="rol" th:field="*{rol}">
-						<small class="form-text text-danger" th:if="${#fields.hasErrors('productVendor')}" th:errors="*{productVendor}"></small>
-					</div> -->
+					<div class="mb-3">
+						<label for="email" class="form-label">Email</label>
+						<input type="email" class="form-control" id="email" th:field="*{email}">
+						<small class="form-text text-danger" th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></small>
+					</div>
 					
 					
 					<div class="form-group col-12"><br>

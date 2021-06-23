@@ -27,16 +27,16 @@ public class LoginController {
 		return "registro";
 	}
 	
-	@PostMapping("/form/saveuser")
+	@PostMapping("/form/registro")
 	public String registro(@Valid @ModelAttribute("usuario") Usuario usuario, BindingResult result, Model model) {  
 		
 		if(result.hasErrors()) { 
-			  return "/form/registro";
+			  return "redirect:/form/registro";
 		}
 		
 		usuarioService.guardarUsuario(usuario);
 		
-		return "login";
+		return "redirect:/login";
 		
 	}
 	
