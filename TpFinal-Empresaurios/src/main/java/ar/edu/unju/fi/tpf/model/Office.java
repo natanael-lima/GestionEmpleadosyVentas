@@ -1,13 +1,11 @@
 package ar.edu.unju.fi.tpf.model;
 
-import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
@@ -33,7 +31,7 @@ public class Office {
 	private String city;
 	
 	@NotNull(message = "Debes ingresar phone")
-	@Min(value=3999999, message="Error")
+	@Min(value=3000000, message="Error")
 	@Max(value=5999999, message="Error")
 	@Column(name="off_phone")
 	private long phone;
@@ -57,11 +55,11 @@ public class Office {
 	private long postalCode;
 	
 	//relacion empleado a oficina- mucho a uno
-	@OneToMany(mappedBy = "office")
-	private List<Employee> employee;
+	//@OneToMany(mappedBy = "office")
+	//private List<Employee> employee;
 	
 	public Office(long officeCode, String city, long phone, String addressLine, String state, String country,
-			long postalCode, List<Employee> employee) {
+			long postalCode) {
 		super();
 		this.officeCode = officeCode;
 		this.city = city;
@@ -70,7 +68,7 @@ public class Office {
 		this.state = state;
 		this.country = country;
 		this.postalCode = postalCode;
-		this.employee = employee;
+		
 	}
 	public Office() {
 		super();
@@ -118,18 +116,13 @@ public class Office {
 	public void setPostalCode(long postalCode) {
 		this.postalCode = postalCode;
 	}
-	public List<Employee> getEmployee() {
-		return employee;
-	}
-	public void setEmployee(List<Employee> employee) {
-		this.employee = employee;
-	}
+	
 	
 	@Override
 	public String toString() {
 		return "Office [officeCode=" + officeCode + ", city=" + city + ", phone=" + phone + ", addressLine="
 				+ addressLine + ", state=" + state + ", country=" + country + ", postalCode=" + postalCode
-				+ ", employee=" + employee + "]";
+				+ ", employee=" + "]";
 	}
 	
 	

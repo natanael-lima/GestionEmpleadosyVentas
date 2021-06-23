@@ -31,37 +31,37 @@
 				  <thead>
 				    <tr>
 				    
-				       <th scope="col">#</th>
-				       <th scope="col">city</th>
-		               <th scope="col">phone</th>
-		               <th scope="col">addressLine</th>
-		               <th scope="col">state</th>
-		               <th scope="col">country</th>
-		               <th scope="col">postalCode</th>
-		               <th scope="col">accion</th>
-		               <th scope="col">accion</th>
+				       <th scope="col">employeeNumber</th>
+		               <th scope="col">lastName</th>
+		               <th scope="col">firstName</th>
+		               <th scope="col">email</th>
+		               <th scope="col">jobTitle</th>
+		               <th scope="col">employee</th>
+		               <th scope="col">office</th>
+		   
 				    </tr>
 				    
 				  </thead>
 				  <tbody>
-				    <tr th:each="off : ${offices}">
-				      <td th:text="${off.officeCode}"></td>
-				      <td th:text="${off.city}"></td>
-		              <td th:text="${off.phone}"></td>
-		              <td th:text="${off.addressLine}"></td>
-		              <td th:text="${off.state}"></td>
-		              <td th:text="${off.country}"></td>
-		              <td th:text="${off.postalCode}"></td>
-		
-		        
-		              <td><a class="editar" th:href="@{/form/modificarOffice/}+${off.officeCode}"> <i  class="fa fa-pencil fa-2x ml-1 mr-1" aria-hidden="true" ></i></a></td>
-		              <td><a class="eliminar" th:href="@{/form/eliminarOffice/}+${off.officeCode}"> <i class="fa fa-trash fa-2x ml-1 mr-1" aria-hidden="true"></i></a></td>
+				    <tr th:each="em : ${employees}">
+				      <td th:text="${em.employeeNumber}"></td>
+		              <td th:text="${em.lastName}"></td>
+		              <td th:text="${em.firstName}"></td>
+		              <td th:text="${em.email}"></td>
+		              <td th:text="${em.jobTitle}"></td>
+		              <td th:text="${em.employeeId}"></td>
+		              <td th:text="${em.office.city}"></td>
+		               
+		               <td><a class="editar" th:href="@{/form/editarEmployee/}+${em.employeeNumber}"> <i  class="fa fa-pencil fa-2x ml-1 mr-1" aria-hidden="true" ></i></a></td>
+		               <td><a class="eliminar" th:href="@{/form/eliminarEmployee/}+${em.employeeNumber}"> <i class="fa fa-trash fa-2x ml-1 mr-1" aria-hidden="true"></i></a></td>
+				   
+				   
 				    </tr>
 				  
 				  </tbody>
 				</table>
-		   </div>	
-					<a style="background: #178C71;" th:href="@{/form/office}" class="btn text-light">Agregar otro</a>
+		 </div>	
+					<a style="background: #178C71;" th:href="@{/form/customer}" class="btn text-light">Agregar otro</a>
 			</div>
 		</div>
 	</div>

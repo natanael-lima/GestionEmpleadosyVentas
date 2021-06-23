@@ -16,10 +16,68 @@
 </head>
 <body>
 	<!--     Inicio Header -->
-	<div th:insert="layouts/header :: header"></div>
+	<div th:insert="layouts/menu :: menu"></div>
 	<!--    Fin Header -->
 
- <p>pagina en proceso </p>
+ <!--    Inicio Contendeor 1 -->
+	
+	<div class="container">
+		<div class="row m-0 p-5">
+			<!--    Inicio Section Form -->
+			<div class="col-12 col-sm-12 col-md-9 col-lg-9 bg-light p-3">
+			
+				<form th:action="@{/form/saveemployee}" th:object="${employee}" method="post">
+					
+                  <input type="hidden" th:field="*{employeeNumber}">
+				
+					<div class="mb-3">
+						<label for="lastName" class="form-label">lastName</label>
+						<input type="text" class="form-control" id="lastName" th:field="*{lastName}">
+						<small class="form-text text-danger" th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}"></small>
+					</div>
+					
+					<div class="mb-3">
+						<label for="firstName" class="form-label">firstName</label>
+						<input type="text" class="form-control" id="firstName" th:field="*{firstName}">
+   					    <small class="form-text text-danger" th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}"></small>
+					</div>
+					
+					<div class="mb-3">
+						<label for="email" class="form-label">email</label>
+						<input type="text" class="form-control" id="email" th:field="*{email}">
+						 <small class="form-text text-danger" th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></small>
+					</div>
+					
+					<div class="mb-3">
+						<label for="jobTitle" class="form-label">jobTitle</label>
+						<input type="text" class="form-control" id="jobTitle" th:field="*{jobTitle}">
+						 <small class="form-text text-danger" th:if="${#fields.hasErrors('jobTitle')}" th:errors="*{jobTitle}"></small>
+					</div>
+					
+					<div class="form-group col-xs-12 col-sm-12 col-md-6 col-lg-6 mb-3">
+						 <label for="employeeId" class="form-label">reportsTo</label>
+						 <select id="employeeId" th:field="*{employeeId}">
+						    <option selected value="">Vacio</option>
+						   	<option th:each="em: ${employees}" th:value="${em.employeeNumber}" th:text="${em.firstName}" th:selected="false">
+						 </select>
+					</div> 
+					
+					<div class="form-group col-xs-12 col-sm-12 col-md-6 col-lg-6 mb-3">
+						 <label for="office" class="form-label">office</label>
+						 <select id="office" th:field="*{office}">
+						   	<option th:each="of: ${office}" th:value="${of.officeCode}" th:text="${of.city}" th:selected="false">
+						 </select>
+					</div>
+					
+					<div class="form-group col-12"><br>
+						 <button type="submit" style="background: #178C71;" class="btn text-light">Guardar</button>
+					</div>
+				
+				</form>
+
+			</div>
+		</div>
+	</div>
  
 <!--    Inicio Contendeor 2 -->
 
