@@ -6,6 +6,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 <!--===============================================================================================-->	
 	<link rel="icon" href="img/dinow.ico">
+	<link rel="stylesheet" href="/css/style.css">
 <!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="vendor/bootstrap/css/bootstrap.min.css">
 <!--===============================================================================================-->
@@ -41,32 +42,25 @@
 				<div th:if="${param.error}" class="alert alert-danger">Credenciales Incorrectas</div>
 			
 				<form th:action="@{/login-post}" method="POST" class="login100-form validate-form">
-					<div class="wrap-input100 validate-input m-b-26" data-validate="Username is required">
-						<span class="label-input100">Usuario</span>
+				
+				   <div class="wrap-input100 validate-input m-b-26" data-validate="Username is required">
+						<label for="username" class="form-label">Nombre de Usuario</label>
 						<input class="input100" type="text" name="username" placeholder="Ingresar usuario">
-						<span class="focus-input100"></span>
+				        <span class="focus-input100"></span>
 					</div>
-
-					<div class="wrap-input100 validate-input m-b-18" data-validate = "Password is required">
-						<span class="label-input100">Password</span>
+				     <div class="wrap-input100 validate-input m-b-26" data-validate="Password is required">
+						<label for="username" class="form-label">Nombre de Usuario</label>
 						<input class="input100" type="password" name="password" placeholder="Ingresar password">
-						<span class="focus-input100"></span>
+				        <span class="focus-input100"></span>
 					</div>
+				
+                     <div class="container-login100-form-btn">
+                      <button class="btn btn-lg text-light btn-block login100-form-btn p-1" type="submit">Iniciar Sesion</button>
+                     </div>
+                  
+                      <h4 class="col-sm-12 d-flex justify-content-center mt-3"><a  class="text-info" href="/form/registro" >Crear cuenta </a></h4>
+				    
 
-					<div class="container-login100-form-btn">
-						<button type="submit" class="login100-form-btn p-1">
-							Iniciar Sesion
-						</button>
-					</div>
-					
-					<div class="flex-sb-m w-full p-b-30">
-						<div>
-							<a href="/form/registro" class="txt1">
-								Registrar
-							</a>
-						</div>
-					</div>
-					
 				</form>
 			</div>
 		</div>

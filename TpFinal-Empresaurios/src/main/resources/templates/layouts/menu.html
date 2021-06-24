@@ -39,11 +39,11 @@
 				</div>
 				<ul class="navbar-nav nav-bar-right" >
 				<li>
-					<a class=" btn btn-outline-light  ml-3" href="/login">Iniciar Sesion</a>
+					<form th:action="@{/logout}" method="POST">
+							<button type="submit" class="btn btn-outline-light mr-2">Cerrar Sesion</button>
+					</form>
 				</li>
-						<form th:action="@{/logout}" method="POST">
-							<button type="submit" class="btn btn-primary mt-3">Salir</button>
-						</form>
+						
 				</ul>
 			</div>
 		</nav>
