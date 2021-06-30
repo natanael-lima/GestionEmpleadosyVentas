@@ -120,9 +120,7 @@ public class Office {
 	
 	@Override
 	public String toString() {
-		return "Office [officeCode=" + officeCode + ", city=" + city + ", phone=" + phone + ", addressLine="
-				+ addressLine + ", state=" + state + ", country=" + country + ", postalCode=" + postalCode
-				+ ", employee=" + "]";
+		return ""  + city;
 	}
 	
 	

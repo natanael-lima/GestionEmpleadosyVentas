@@ -52,7 +52,7 @@
 		              <td th:text="${em.email}"></td>
 		              <td th:text="${em.jobTitle}"></td>
 		              <td th:text="${em.employeeId}"></td>
-		              <td th:text="${em.office.city}"></td>
+		              <td th:text="${em.office}"></td>
 		               
 		               <td><a class="editar" th:href="@{/form/editarEmployee/}+${em.employeeNumber}"> <i  class="fa fa-pencil fa-2x ml-1 mr-1" aria-hidden="true" ></i></a></td>
 		               <td><a class="eliminar" th:href="@{/form/eliminarEmployee/}+${em.employeeNumber}"> <i class="fa fa-trash fa-2x ml-1 mr-1" aria-hidden="true"></i></a></td>

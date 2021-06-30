@@ -44,6 +44,13 @@ public class PaymentController {
 		
 		
 		paymentService.guardarPayment(payment);
+		model.addAttribute("payments",paymentService.obtenerPayments());
+		return "tablaPayment";
+	}
+	@GetMapping("/tablaPayment")
+	public String getTablaPayment(Model model) {
+		
+		model.addAttribute("payments",paymentService.obtenerPayments());
 		return "tablaPayment";
 	}
 }
