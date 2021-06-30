@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html xmlns:th="http://thymeleaf.org">
+<html xmlns:th="http://thymeleaf.org" 
+	  xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
     <!-- Required meta tags -->
 <meta charset="utf-8">
@@ -33,16 +34,29 @@
 				<div class="navbar-nav mr-auto">
 					<a class="nav-link active text-light ml-3" href="/index"> Inicio </a>
 					<a class="nav-link text-light ml-3" href="/form/orderDetail">Comprar</a> 
-					<a class="nav-link text-light ml-3" href="/form/customer">Registrar Cliente</a>
-					<a class="nav-link text-light ml-3" href="/form/employee">Registrar Empleado</a>
+					<a class="nav-link text-light ml-3" href="/form/customer" sec:authorize="isAuthenticated()">Registrar Cliente</a>
+					<a class="nav-link text-light ml-3" href="/form/employee" sec:authorize="isAuthenticated()">Registrar Empleado</a>
 					
 				</div>
 				<ul class="navbar-nav nav-bar-right" >
-				<li>
-					<form th:action="@{/logout}" method="POST">
-							<button type="submit" class="btn btn-outline-light mr-2">Cerrar Sesion</button>
-					</form>
-				</li>
+					<li sec:authorize="!isAuthenticated()">
+						<a class="btn btn-outline-light mr-2" th:href="@{/login}">Iniciar Sesion</a>
+					</li>
+					
+					<li class="btn-group dropleft mr-5" sec:authorize="isAuthenticated()">
+					  <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+					    <span sec:authentication="name"></span>
+					  </button>
+					  <div class="dropdown-menu">
+					    <!-- Dropdown menu links -->
+					    <a class="dropdown-item" href="#">Perfil</a>
+					    <a class="dropdown-item" href="#">Cambiar Contraseña</a>
+					    <form th:action="@{/logout}" method="POST">
+								<button type="submit" class="dropdown-item">Cerrar Sesion</button>
+						</form>
+					  </div>
+					</li>
+					
 						
 				</ul>
 			</div>

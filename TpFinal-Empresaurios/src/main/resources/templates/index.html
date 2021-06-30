@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html xmlns:th="http://thymeleaf.org">
+<html xmlns:th="http://thymeleaf.org"
+	  xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 	<head>
 		<!-- Required meta tags -->
 		<meta charset="utf-8">
@@ -28,7 +29,7 @@
 								<h5 class="card-title">PRODUCTOS</h5>
 								<p class="card-text">Tabla que muestra los productos que se
 									ingresaron.</p>
-								<a style="background: #178C71;" href="/form/product" class="btn text-light">Agregar</a>
+								<a style="background: #178C71;" href="/form/product" class="btn text-light" sec:authorize="isAuthenticated()">Agregar</a>
 									<a style="background: #178C71;" href="/tablaprod" class="btn text-light">Ver Tabla</a>
 							</div>
 						</div>
@@ -39,7 +40,7 @@
 								<h5 class="card-title">CATEGORIA DE PRODUCTOS</h5>
 								<p class="card-text">Tabla que muestra las categorias del
 									producto que se ingresaron.</p>
-								<a style="background: #178C71;" href="/form/productline" class="btn text-light">Agregar</a>
+								<a style="background: #178C71;" href="/form/productline" class="btn text-light" sec:authorize="isAuthenticated()">Agregar</a>
 								<a style="background: #178C71;" href="/tablaprodline" class="btn text-light">Ver Tabla</a>
 							</div>
 						</div>
@@ -64,7 +65,7 @@
 								<h5 class="card-title">Tabla Pedidos</h5>
 								<p class="card-text">Tabla que muestra los clientes
 									registrados.</p>
-								<a style="background: #178C71;" href="/form/orderDetail" class="btn text-light">Agregar pedido</a>	
+								<a style="background: #178C71;" href="/form/orderDetail" class="btn text-light" sec:authorize="isAuthenticated()">Agregar</a>	
 								<a style="background: #178C71;" href="/tablaOrder" class="btn text-light">Ver
 									Tabla</a>
 							</div>
@@ -80,7 +81,7 @@
 								<h5 class="card-title">OFICINA DE VENTAS</h5>
 								<p class="card-text">Tabla que muestra las ventas realizadas
 									de la empresa.</p>
-								<a style="background: #178C71;" href="/form/office" class="btn text-light">Agregar</a>
+								<a style="background: #178C71;" href="/form/office" class="btn text-light" sec:authorize="isAuthenticated()">Agregar</a>
 								<a style="background: #178C71;" href="/tablaoffice" class="btn text-light">Ver Tabla</a>
 							</div>
 						</div>
@@ -91,7 +92,7 @@
 								<h5 class="card-title">EMPLEADOS</h5>
 								<p class="card-text">Tabla que muestra los empleados
 									registrados.</p>
-								<a style="background: #178C71;" href="/form/employee" class="btn text-light">Agregar</a>
+								<a style="background: #178C71;" href="/form/employee" class="btn text-light" sec:authorize="isAuthenticated()">Agregar</a>
 								<a style="background: #178C71;" href="/tablaemployee" class="btn text-light">Ver
 									Tabla</a>
 							</div>

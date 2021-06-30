@@ -9,6 +9,7 @@ import java.util.List;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -38,9 +39,8 @@ public class ProductLineController {
 	@Autowired
 	IProductLineService prodLineService;
 	
-	
-	
 	//============================ Metodo para ingresar al form productLine ============================
+	@Secured({"ROLE_USER","ROLE_ADMIN"})
 	@GetMapping("/form/productline")
 	public String getFormProdLine(Model model) {
 		model.addAttribute(productLine);
@@ -48,6 +48,7 @@ public class ProductLineController {
 	}
 	
 	//============================ Metodo para MOSTRAR la tabla productLine ============================
+	@Secured({"ROLE_USER","ROLE_ADMIN"})
 	@GetMapping("/tablaprodline")
 	public String getTablaProdLine(Model model) {
 		
@@ -57,6 +58,7 @@ public class ProductLineController {
 	}
 	
 	//============================ Metodo para GUARDAR los datos del form cargados ============================
+	@Secured({"ROLE_USER","ROLE_ADMIN"})
 	@PostMapping("/form/saveproductline")
 	public ModelAndView saveProductLine(@Valid @ModelAttribute("productLine") ProductLine productLine, BindingResult result, @RequestParam("file") MultipartFile imagen ) {
 		
@@ -96,6 +98,7 @@ public class ProductLineController {
 	
 	
 	//============================ Metodo para ELIMINAR los datos del form cargado ============================
+	@Secured("ROLE_ADMIN")
 	@GetMapping("/form/eliminarProdLine/{id}")
 	public String getEliminarProdLine(@PathVariable(name="id")long param, Model model) {
 		
@@ -119,8 +122,9 @@ public class ProductLineController {
 	
 	
 	//============================ Metodo para EDITAR los datos del form cargado ============================
-		@GetMapping("/form/editarProdLine/{id}")
-		public String getEditarProdLine (@PathVariable(name="id") long param, Model model) {
+	@Secured("ROLE_ADMIN")	
+	@GetMapping("/form/editarProdLine/{id}")
+	public String getEditarProdLine (@PathVariable(name="id") long param, Model model) {
 			
 			ProductLine prodLine = prodLineService.buscarProductLine(param);
 			model.addAttribute("productLine", prodLine);

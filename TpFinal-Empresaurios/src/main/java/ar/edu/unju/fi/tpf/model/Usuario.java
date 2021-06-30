@@ -1,10 +1,13 @@
 package ar.edu.unju.fi.tpf.model;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
@@ -37,8 +40,9 @@ public class Usuario {
 	@Email(message="Campo obligatorio")
 	private String email;
 	
-	//@OneToOne(mappedBy = "employee",fetch = FetchType.LAZY)
-	//private Employee employee;
+	@OneToOne(cascade=CascadeType.ALL)
+	@JoinColumn(name="usu_rol")
+	private Rol rol;
 
 	public Usuario() {
 		super();
@@ -76,13 +80,19 @@ public class Usuario {
 		this.email = email;
 	}
 
-	@Override
-	public String toString() {
-		return "Usuario [id=" + id + ", nombreU=" + nombreU + ", pass=" + pass + ", email=" + email + "]";
+	public Rol getRol() {
+		return rol;
 	}
 
+	public void setRol(Rol rol) {
+		this.rol = rol;
+	}
+
+	@Override
+	public String toString() {
+		return "Usuario [id=" + id + ", nombreU=" + nombreU + ", pass=" + pass + ", email=" + email + ", rol=" + rol
+				+ "]";
+	}
 	
-	
-		
 	
 }
