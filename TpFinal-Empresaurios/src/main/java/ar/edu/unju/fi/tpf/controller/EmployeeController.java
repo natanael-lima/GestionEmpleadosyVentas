@@ -13,7 +13,9 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import ar.edu.unju.fi.tpf.model.Customer;
 import ar.edu.unju.fi.tpf.model.Employee;
+import ar.edu.unju.fi.tpf.service.ICustomerService;
 import ar.edu.unju.fi.tpf.service.IEmployeeService;
 import ar.edu.unju.fi.tpf.service.IOfficeService;
 
@@ -28,6 +30,9 @@ public class EmployeeController {
 	
 	@Autowired
 	IEmployeeService employeeService;
+	
+	@Autowired
+	ICustomerService customerService;
 	
 	//============================ Metodo para ingresar al form empleado ============================
 	@Secured({"ROLE_USER","ROLE_ADMIN"})
@@ -78,6 +83,23 @@ public class EmployeeController {
 		public ModelAndView getEliminarProduct(@PathVariable(value = "id") long param) { 
 			 
 			 ModelAndView model = new ModelAndView("tablaEmployee");
+			 
+			 //eliminar relacion de empleado a cargo
+			 for(Employee emp: employeeService.obtenerEmployees()) {
+				 if(emp.getEmployeeId()!=null) {
+				 if(emp.getEmployeeId().getEmployeeNumber()==employeeService.buscarEmployee(param).getEmployeeNumber()) {
+					 emp.setEmployeeId(null);
+					 employeeService.guardarEmployee(emp);
+				 }
+				 }
+			 }
+			 //eliminar relacion de cliente con empleado
+			 for(Customer cust: customerService.obtenerClientes()) {
+				 if(cust.getEmployee().getEmployeeNumber()==param) {
+					 cust.setEmployee(null);
+					 customerService.guardarCliente(cust);
+				 }
+			 }
 			 employeeService.elimarEmployee(param);
 			 model.addObject("employees",employeeService.obtenerEmployees() );
 			 return model; 

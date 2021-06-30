@@ -12,7 +12,10 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
+
+import ar.edu.unju.fi.tpf.model.Employee;
 import ar.edu.unju.fi.tpf.model.Office;
+import ar.edu.unju.fi.tpf.service.IEmployeeService;
 import ar.edu.unju.fi.tpf.service.IOfficeService;
 
 @Controller
@@ -22,6 +25,8 @@ public class OfficeController {
 	
 	@Autowired
 	private IOfficeService officeService;
+	@Autowired
+	private IEmployeeService employeeService;
 	
 	//============================ Metodo para ingresar al form office ============================
 	@Secured({"ROLE_USER","ROLE_ADMIN"})
@@ -66,6 +71,12 @@ public class OfficeController {
 	  public ModelAndView getEliminarOffice(@PathVariable(value = "id") long param) { 
 		  
 	  ModelAndView model = new ModelAndView("tablaOffice");
+	  for(Employee emp: employeeService.obtenerEmployees()) {
+		  if(emp.getOffice().getOfficeCode()==officeService.buscarOffice(param).getOfficeCode()) {
+			  emp.setOffice(null);
+			  employeeService.guardarEmployee(emp);
+		  }
+	  }
 	  officeService.eliminarOffice(param);
 	  model.addObject("offices", officeService.obtenerOffice()); 
 	  return model; 
