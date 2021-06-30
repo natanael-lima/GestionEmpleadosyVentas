@@ -41,8 +41,8 @@
 		               <th scope="col">postalCode</th>
 					   <th scope="col">country</th>
 					   <th scope="col">creditLimit</th>
-					   <th scope="col" >edit</th>
-					   <th scope="col" >clear</th>
+					   <th scope="col" sec:authorize="hasRole('ROLE_ADMIN')">edit</th>
+					   <th scope="col" sec:authorize="hasRole('ROLE_ADMIN')">clear</th>
 				    </tr>
 				    
 				  </thead>
@@ -58,8 +58,8 @@
 		              <td th:text="${cli.country}"></td>
 		              <td th:text="${cli.creditLimit}"></td>
 		
-		               <td><a class="editar" th:href="@{/form/modificarCustomer/}+${cli.customerNumber}"> <i  class="fa fa-pencil fa-2x ml-1 mr-1" aria-hidden="true" ></i></a></td>
-		               <td><a class="eliminar" th:href="@{/form/eliminarCustomer/}+${cli.customerNumber}"> <i class="fa fa-trash fa-2x ml-1 mr-1" aria-hidden="true"></i></a></td>
+		               <td sec:authorize="hasRole('ROLE_ADMIN')"><a class="editar" th:href="@{/form/modificarCustomer/}+${cli.customerNumber}"> <i  class="fa fa-pencil fa-2x ml-1 mr-1" aria-hidden="true" ></i></a></td>
+		               <td sec:authorize="hasRole('ROLE_ADMIN')"><a class="eliminar" th:href="@{/form/eliminarCustomer/}+${cli.customerNumber}"> <i class="fa fa-trash fa-2x ml-1 mr-1" aria-hidden="true"></i></a></td>
 				    </tr>
 				  
 				  </tbody>
