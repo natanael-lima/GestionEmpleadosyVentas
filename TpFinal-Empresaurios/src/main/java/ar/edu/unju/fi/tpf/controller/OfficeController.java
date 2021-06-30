@@ -3,6 +3,7 @@ package ar.edu.unju.fi.tpf.controller;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -23,6 +24,7 @@ public class OfficeController {
 	private IOfficeService officeService;
 	
 	//============================ Metodo para ingresar al form office ============================
+	@Secured({"ROLE_USER","ROLE_ADMIN"})
 	@GetMapping("/form/office")
 	public String getFormOffice(Model model) {
 		model.addAttribute(office);
@@ -30,6 +32,7 @@ public class OfficeController {
 	}
 	
 	//============================ Metodo para mostrar tabla office ============================
+	@Secured({"ROLE_USER","ROLE_ADMIN"})
 	@GetMapping("/tablaoffice")
 	public String getTablaOffice(Model model) {
 		
@@ -38,6 +41,7 @@ public class OfficeController {
 	}
 	
 	//============================ Metodo para almacenar los datos del form cargado ============================
+	@Secured({"ROLE_USER","ROLE_ADMIN"})
 	@PostMapping("/form/saveoffice")
 	public ModelAndView saveOffice(@Valid @ModelAttribute("office") Office office, BindingResult result) {
 		
@@ -57,7 +61,8 @@ public class OfficeController {
 	}
 	
 	//============================ Metodo para eliminar ============================
-	  @GetMapping("/form/eliminarOffice/{id}") 
+	@Secured("ROLE_ADMIN")   
+	@GetMapping("/form/eliminarOffice/{id}") 
 	  public ModelAndView getEliminarOffice(@PathVariable(value = "id") long param) { 
 		  
 	  ModelAndView model = new ModelAndView("tablaOffice");
@@ -67,7 +72,8 @@ public class OfficeController {
 	  }
 	  
 	//============================ Metodo para editar ============================  
-	  @GetMapping("/form/modificarOffice/{id}") 
+	@Secured("ROLE_ADMIN")   
+	@GetMapping("/form/modificarOffice/{id}") 
 	  public ModelAndView getModificarOffice(@PathVariable(value = "id") long param) 
 	  { 
 		  ModelAndView model = new ModelAndView("form-office");

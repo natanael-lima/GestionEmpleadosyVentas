@@ -1,10 +1,9 @@
 package ar.edu.unju.fi.tpf.controller;
 
-import java.util.List;
-
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -15,7 +14,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import ar.edu.unju.fi.tpf.model.Employee;
-import ar.edu.unju.fi.tpf.model.Office;
 import ar.edu.unju.fi.tpf.service.IEmployeeService;
 import ar.edu.unju.fi.tpf.service.IOfficeService;
 
@@ -32,6 +30,7 @@ public class EmployeeController {
 	IEmployeeService employeeService;
 	
 	//============================ Metodo para ingresar al form empleado ============================
+	@Secured({"ROLE_USER","ROLE_ADMIN"})
 		@GetMapping("/form/employee")
 		public String getFormEmp(Model model) {
 			model.addAttribute(employee);
@@ -41,6 +40,7 @@ public class EmployeeController {
 		}
 		
 	//============================ Metodo para mostrar la tabla employee ============================
+	@Secured({"ROLE_USER","ROLE_ADMIN"})
 		@GetMapping("/tablaemployee")
 		public String getTablaEmployee(Model model) {
 			
@@ -49,6 +49,7 @@ public class EmployeeController {
 		}
 		
 	//============================ Metodo para almacenar los datos del form cargado ============================
+		@Secured({"ROLE_USER","ROLE_ADMIN"})
 		@PostMapping("/form/saveemployee")
 		public String saveEmployee(@Valid @ModelAttribute("employee") Employee employee, BindingResult result,Model model) {
 			if(result.hasErrors()) {
@@ -61,6 +62,7 @@ public class EmployeeController {
 		}
 	
 	//============================ Metodo para EDITAR los datos del form cargado ============================
+		@Secured("ROLE_ADMIN")
 		@GetMapping("/form/editarEmployee/{id}")
 		public String getEditarProduct(@PathVariable (value="id")long param, Model model) {
 		    
@@ -71,6 +73,7 @@ public class EmployeeController {
 		}
 	
 	//============================ Metodo para ELIMINAR los datos del form cargado ============================
+		@Secured("ROLE_ADMIN")
 		@GetMapping("/form/eliminarEmployee/{id}") 
 		public ModelAndView getEliminarProduct(@PathVariable(value = "id") long param) { 
 			 

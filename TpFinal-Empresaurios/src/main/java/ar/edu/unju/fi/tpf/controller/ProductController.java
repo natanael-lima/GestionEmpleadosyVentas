@@ -4,6 +4,7 @@ package ar.edu.unju.fi.tpf.controller;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -14,7 +15,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import ar.edu.unju.fi.tpf.model.Product;
-import ar.edu.unju.fi.tpf.model.ProductLine;
 import ar.edu.unju.fi.tpf.service.IProductLineService;
 import ar.edu.unju.fi.tpf.service.IProductService;
 
@@ -31,6 +31,7 @@ public class ProductController {
 	IProductService prodService;
 	
 	//============================ Metodo para ingresar al form producto ============================
+	@Secured({"ROLE_USER","ROLE_ADMIN"})
 	@GetMapping("/form/product")
 	public String getFormProd(Model model) {
 		model.addAttribute(product);
@@ -39,6 +40,7 @@ public class ProductController {
 	}
 	
 	//============================ Metodo para MOSTRAR tabla producto ============================
+	@Secured({"ROLE_USER","ROLE_ADMIN"})
 	@GetMapping("/tablaprod")
 	public String getTablaprod(Model model) {
 		
@@ -48,6 +50,7 @@ public class ProductController {
 	}
 	
 	//============================ Metodo para GUARDAR los datos del form cargado ============================
+	@Secured({"ROLE_USER","ROLE_ADMIN"})
 	@PostMapping("/form/saveproduct")
 	public String saveProduct(@Valid @ModelAttribute("product") Product product,BindingResult result,Model model) {
 		
@@ -70,6 +73,7 @@ public class ProductController {
 	}
 		
 	//============================ Metodo para ELIMINAR los datos del form cargado ============================
+	@Secured("ROLE_ADMIN")
 	@GetMapping("/form/eliminarProd/{id}") 
 	public ModelAndView getEliminarProduct(@PathVariable(value = "id") long param) { 
 		 
@@ -81,6 +85,7 @@ public class ProductController {
 	
 	
 	//============================ Metodo para EDITAR los datos del form cargado ============================
+	@Secured("ROLE_ADMIN")
 	@GetMapping("/form/editarProd/{id}")
 	public String getEditarProduct(@PathVariable (value="id")long param, Model model) {
 	    

@@ -1,6 +1,7 @@
 package ar.edu.unju.fi.tpf.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -23,6 +24,7 @@ public class PaymentController {
 	@Autowired
 	IOrderDetailService orderDetailService; 
 	
+	@Secured({"ROLE_USER","ROLE_ADMIN"})
 	@GetMapping("/form/payment")
 	public String getPaymentPage(Model model) {
 		model.addAttribute(payment);
@@ -31,6 +33,7 @@ public class PaymentController {
 		model.addAttribute("customer",orden.getOrderId().getOrderNumber().getCustomerNumber());
 		return "form-payment";
 	}
+	@Secured({"ROLE_USER","ROLE_ADMIN"})
 	@PostMapping("/form/savePayment")
 	public String savePaymentPage(@ModelAttribute("payment") Payment payment,Model model) {
 		OrderDetail orden=orderDetailService.obtenerOrderDetails().get(orderDetailService.obtenerOrderDetails().size()-1);

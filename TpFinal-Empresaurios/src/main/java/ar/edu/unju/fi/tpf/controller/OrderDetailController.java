@@ -6,6 +6,7 @@ import java.util.List;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -53,7 +54,9 @@ public class OrderDetailController {
 	
 	@Autowired
 	IOrderService orderService;
+	
 	//Formulario OrderDetail
+	@Secured({"ROLE_USER","ROLE_ADMIN"})
 	@GetMapping("/form/orderDetail")
 	public String getOrderDetailPage(Model model) {
 		model.addAttribute(orderDetail);
@@ -71,6 +74,7 @@ public class OrderDetailController {
 		return "form-orderDetail";
 	}
 	
+	@Secured({"ROLE_USER","ROLE_ADMIN"})
 	@PostMapping("/form/saveOrderDetail")
 	public String getOrderDetailPage(@ModelAttribute("orderDetail") OrderDetail orderDetail,@Valid  @ModelAttribute("order") Order order,BindingResult result,@ModelAttribute("lista") ListProducts lista,Model model) {
 		double amount=0;

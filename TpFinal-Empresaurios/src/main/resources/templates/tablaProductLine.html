@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html xmlns:th="http://thymeleaf.org">
+<html xmlns:th="http://thymeleaf.org"
+	  xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 	<head>
 		<!-- Required meta tags -->
 		<meta charset="utf-8">
@@ -36,8 +37,8 @@
 			               <th scope="col">htmlDescription</th>
 			               <th scope="col">image</th>
 			               <th scope="col">download</th>
-			               <th scope="col">edit</th>
-						   <th scope="col">clear</th>
+			               <th scope="col" sec:authorize="hasRole('ROLE_ADMIN')">edit</th>
+						   <th scope="col" sec:authorize="hasRole('ROLE_ADMIN')">clear</th>
 					    </tr>
 					   
 					  </thead>
@@ -49,8 +50,8 @@
 			              <td> <img class="img-responsive mx-auto d-block" th:alt="${pl.image}" th:src="@{'/images/' + ${pl.image}}" style="max-width: 45%;"> </td>
 			              
 			              <td><a class="download" th:href="@{'/images/' + ${pl.image}}" download="nombre_imagen"> <i class="fa fa-cloud-download fa-2x ml-1 mr-1" aria-hidden="true"></i></a></td> 
-			              <td><a class="editar" th:href="@{/form/editarProdLine/}+${pl.productLineId}"> <i  class="fa fa-pencil fa-2x ml-1 mr-1" aria-hidden="true" ></i></a></td>
-		                  <td><a class="eliminar" th:href="@{/form/eliminarProdLine/}+${pl.productLineId}"> <i class="fa fa-trash fa-2x ml-1 mr-1" aria-hidden="true"></i></a></td>
+			              <td sec:authorize="hasRole('ROLE_ADMIN')"><a class="editar" th:href="@{/form/editarProdLine/}+${pl.productLineId}"> <i  class="fa fa-pencil fa-2x ml-1 mr-1" aria-hidden="true" ></i></a></td>
+		                  <td sec:authorize="hasRole('ROLE_ADMIN')"><a class="eliminar" th:href="@{/form/eliminarProdLine/}+${pl.productLineId}"> <i class="fa fa-trash fa-2x ml-1 mr-1" aria-hidden="true"></i></a></td>
 			              
 			              
 					    </tr>

@@ -6,6 +6,7 @@ import java.util.List;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -28,12 +29,14 @@ public class CustomerController {
 	ICustomerService customerService;
 
 	//============================ Metodo para ingresar al formulario ============================
+	@Secured({"ROLE_USER","ROLE_ADMIN"})
 	@GetMapping("/form/customer")
 	public String getFormCust(Model model){
 		model.addAttribute(customer);
 		return "form-cliente";
 	}
 	//============================ Metodo para mostrar la tabla  ============================
+	@Secured({"ROLE_USER","ROLE_ADMIN"})
 	@GetMapping("/tablacustomer")
 	public String getTablaCustomer(Model model) {
 		List<Customer> clientes= new ArrayList<Customer>();
@@ -46,6 +49,7 @@ public class CustomerController {
 		return "tablaCustomer";
 	}
 	//============================ Metodo para enviar datos a traves del formulario ============================
+	@Secured({"ROLE_USER","ROLE_ADMIN"})
 	@PostMapping("/form/savecustomer")
 	public ModelAndView saveCustomer(@Valid @ModelAttribute("customer") Customer customer, BindingResult result) {
 		
@@ -70,6 +74,7 @@ public class CustomerController {
 	}
 	
 	//============================ Metodo para eliminar ============================
+	  @Secured("ROLE_ADMIN")  
 	  @GetMapping("/form/eliminarCustomer/{id}") 
 	  public ModelAndView getEliminarOffice(@PathVariable(value = "id") long param) { 
 	  Customer cliente=customerService.buscarCliente(param);
@@ -87,6 +92,7 @@ public class CustomerController {
 	  }
 	  
 	//============================ Metodo para editar ============================  
+	  @Secured("ROLE_ADMIN")
 	  @GetMapping("/form/modificarCustomer/{id}") 
 	  public ModelAndView getModificarOffice(@PathVariable(value = "id") long param) 
 	  { 
