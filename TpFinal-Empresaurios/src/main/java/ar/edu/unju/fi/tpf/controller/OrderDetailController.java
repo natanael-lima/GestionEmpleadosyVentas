@@ -129,4 +129,9 @@ public class OrderDetailController {
 		model.addAttribute("customer",orderDetail.getOrderId().getOrderNumber().getCustomerNumber());
 		return "form-payment";
 	}
+	@GetMapping("/tablaOrderDetail")
+	public String getTablaOrderDetail(Model model) {
+		model.addAttribute("orderDetails",orderDetailService.obtenerOrderDetails());
+		return "tablaOrderDetail";
+	}
 }

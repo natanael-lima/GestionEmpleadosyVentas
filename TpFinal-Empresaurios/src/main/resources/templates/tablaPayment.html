@@ -1,10 +1,92 @@
 <!DOCTYPE html>
-<html>
-<head>
-<meta charset="ISO-8859-1">
-<title>Insert title here</title>
-</head>
+<html xmlns:th="http://thymeleaf.org">
+	<head>
+		<!-- Required meta tags -->
+		<meta charset="utf-8">
+		<meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1">
+		<link rel="icon" href="img/dinow.ico">
+		<link rel="stylesheet" href="/css/style.css">
+		<!-- Bootstrap CSS -->
+		<link rel="stylesheet" href="/webjars/bootstrap/4.6.0/css/bootstrap.min.css">
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+		<title>Empresaurios</title>
+	</head>
 <body>
-En Construccion PE
+	<!--     Inicio Menu -->
+	<div th:insert="layouts/menu :: menu"></div>
+	<!--    Fin Menu -->
+
+	<!--    Inicio Contendeor 1 -->
+	
+	<div class="container">
+		<div class="row m-0 p-5">
+		
+		<h2 class="p-2 col-sm-12 d-flex justify-content-center">Tabla de Pagos</h2>
+			<!--    Inicio Section Tabla -->
+			<div class="col-12 col-sm-12 col-md-12 col-lg-12 bg-light p-3">
+			
+				<div class="table-responsive-sm">	
+				
+		 		<table class="tab2 table table-bordered table-dark ">
+		 		
+				  <thead>
+				    <tr>
+				       <th scope="col">#</th>
+				       <th scope="col">customerNumber</th>
+		               <th scope="col">customerName</th>
+		               <th scope="col">paymentDate</th>
+		               <th scope="col">amount</th>
+		          
+				    </tr>
+				    
+				  </thead>
+				  <tbody>
+				    <tr th:each="pay : ${payments}">
+				      <td th:text="${pay.paymentID.checkNumber}"></td>
+				      <td th:text="${pay.paymentID.customerNumber.customerNumber}"></td>
+		              <td th:text="${pay.paymentID.customerNumber.customerName}"></td>
+		              <td th:text="${pay.paymentDate}"></td>
+		              <td th:text="${pay.amount}"></td>
+		       
+		
+<!-- 		               <td><a class="editar" th:href="@{/form/modificarCustomer/}+${cli.customerNumber}"> <i  class="fa fa-pencil fa-2x ml-1 mr-1" aria-hidden="true" ></i></a></td> -->
+<!-- 		               <td><a class="eliminar" th:href="@{/form/eliminarCustomer/}+${cli.customerNumber}"> <i class="fa fa-trash fa-2x ml-1 mr-1" aria-hidden="true"></i></a></td> -->
+				    </tr>
+				  
+				  </tbody>
+				</table>
+		   </div>	
+                       <a style="background: #178C71;" th:href="@{/form/customer}" class="btn text-light">Agregar otro</a>
+			</div>
+		</div>
+	</div>
+	
+<!--    Inicio Contendeor 2 -->
+
+	<div class="card text-center">
+	
+		<div class="card-header">Grupo Empresaurios</div>
+		
+		<div class="card-body">
+			<h5 class="card-title">Alumnos</h5>
+			<p class="card-text">Desarrollo de pagina web realizado por
+				Gaitan Maximiliano - Lima Natanael - Virreyra Raquel - Loto Mateo.</p>
+			<a style="background: #178C71;" href="#" class="btn text-light">
+				Ver	grupo
+			</a>
+		</div>
+		
+		<div class="card-footer text-muted">Programacion Visual 2021</div>
+		
+	</div>
+	<!--    Fin Contendeor 2 -->
+	
+	<!--  Footer -->
+	<div th:insert="layouts/footer :: foot"></div>
+
+	<!-- JavaScript  Jquery Popper and Bootstrap JS -->
+	<script src="/webjars/jquery/3.5.1/jquery.slim.min.js"></script>
+	<script src="/webjars/popper.js/1.16.1/dist/popper.min.js"></script>
+	<script src="/webjars/bootstrap/4.6.0/js/bootstrap.min.js"></script>
 </body>
 </html>
