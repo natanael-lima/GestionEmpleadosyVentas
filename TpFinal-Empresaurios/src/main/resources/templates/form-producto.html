@@ -69,7 +69,7 @@
 						 <select id="producto" th:field="*{productLine}">
 						   	<option th:each="prodLine: ${productLines}" th:value="${prodLine.productLineId}" th:text="${prodLine.textDescription}" th:selected="false">
 						 </select>
-						
+						<small class="form-text text-danger" th:if="${#fields.hasErrors('productLine')}" th:errors="*{productLine}"></small>
 					</div>
 					
 					<div class="form-group col-12"><br>

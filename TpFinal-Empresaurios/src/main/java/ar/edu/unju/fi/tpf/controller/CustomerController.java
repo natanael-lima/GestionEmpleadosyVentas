@@ -1,5 +1,8 @@
 package ar.edu.unju.fi.tpf.controller;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,8 +36,12 @@ public class CustomerController {
 	//============================ Metodo para mostrar la tabla  ============================
 	@GetMapping("/tablacustomer")
 	public String getTablaCustomer(Model model) {
-		
-		model.addAttribute("clientes", customerService.obtenerClientes());
+		List<Customer> clientes= new ArrayList<Customer>();
+		for(Customer cli: customerService.obtenerClientes()) {
+			if(cli.getState()!=false)
+				clientes.add(cli);
+		}
+		model.addAttribute("clientes", clientes);
 		
 		return "tablaCustomer";
 	}
@@ -50,20 +57,32 @@ public class CustomerController {
 				
 				return model;
 			}	
-			
+			customer.setState(true);
 			customerService.guardarCliente(customer);
 			model= new ModelAndView("index");
-			model.addObject("clientes",customerService.obtenerClientes());
+			List<Customer> clientes= new ArrayList<Customer>();
+			for(Customer cli: customerService.obtenerClientes()) {
+				if(cli.getState()!=false)
+					clientes.add(cli);
+			}
+			model.addObject("clientes",clientes);
 			return model;
 	}
 	
 	//============================ Metodo para eliminar ============================
 	  @GetMapping("/form/eliminarCustomer/{id}") 
 	  public ModelAndView getEliminarOffice(@PathVariable(value = "id") long param) { 
-		  
+	  Customer cliente=customerService.buscarCliente(param);
+	  cliente.setState(false);
+	  customerService.guardarCliente(cliente);
 	  ModelAndView model = new ModelAndView("tablaCustomer");
-	  customerService.eliminarCliente(param);
-	  model.addObject("clientes", customerService.obtenerClientes()); 
+	  
+	  List<Customer> clientes= new ArrayList<Customer>();
+		for(Customer cli: customerService.obtenerClientes()) {
+			if(cli.getState()!=false)
+				clientes.add(cli);
+		}
+	  model.addObject("clientes", clientes); 
 	  return model; 
 	  }
 	  

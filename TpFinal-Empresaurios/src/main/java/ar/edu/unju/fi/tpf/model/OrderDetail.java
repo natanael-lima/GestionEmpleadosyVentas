@@ -1,11 +1,16 @@
 package ar.edu.unju.fi.tpf.model;
 
 import java.io.Serializable;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+
 
 import org.springframework.stereotype.Component;
 
@@ -28,15 +33,16 @@ public class OrderDetail implements Serializable{
 	@Column(name="ordD_price")
 	private double priceEach;
 	
-	@Column(name="ordD_lineNumber")
-	private int orderLineNumber;
+	
+	
 
-	public OrderDetail(OrderDetailId orderId, int quantityOrdered, double priceEach, int orderLineNumber) {
+   
+
+	public OrderDetail(OrderDetailId orderId, int quantityOrdered, double priceEach) {
 		super();
 		this.orderId = orderId;
 		this.quantityOrdered = quantityOrdered;
 		this.priceEach = priceEach;
-		this.orderLineNumber = orderLineNumber;
 	}
 
 	public OrderDetail() {
@@ -67,15 +73,7 @@ public class OrderDetail implements Serializable{
 		this.priceEach = priceEach;
 	}
 
-	public int getOrderLineNumber() {
-		return orderLineNumber;
-	}
 
-	public void setOrderLineNumber(int orderLineNumber) {
-		this.orderLineNumber = orderLineNumber;
-	}
-	
-	
 	
 	
 }

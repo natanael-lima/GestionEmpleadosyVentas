@@ -52,8 +52,8 @@ public class ProductController {
 	public String saveProduct(@Valid @ModelAttribute("product") Product product,BindingResult result,Model model) {
 		
 			if(result.hasErrors()) { //Si tiene errores
-				
-				//model.addAttribute("productLines", prodLineService.obtenerProductLines()); //envia la lista de productLines para el select de la linea de productos
+				model.addAttribute(product);
+				model.addAttribute("productLines", prodLineService.obtenerProductLines()); //envia la lista de productLines para el select de la linea de productos
 				System.out.println("EXISTIERON ERRORES EN EL FORM");
 				return "form-producto";
 				

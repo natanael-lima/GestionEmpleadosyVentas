@@ -12,6 +12,8 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.validation.Valid;
+import javax.validation.constraints.NotNull;
 
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Component;
@@ -44,6 +46,7 @@ public class Order {
 	private String comments;
 	
 	//Relacion orden a cliente - muchos a uno
+	@Valid
 	@ManyToOne(fetch=FetchType.LAZY)
 	@JoinColumn(name = "cust_number")
 	private Customer customerNumber;

@@ -59,6 +59,7 @@
 						    <select id="customer" th:field="*{order.customerNumber}">
 						    	<option th:each="cust: ${customers}" th:value="${cust.customerNumber}" th:text="${cust.customerName}" th:selected="false">
 						    </select>
+						    <small class="form-text text-danger" th:if="${#fields.hasErrors('order.customerNumber')}" th:errors="*{order.customerNumber}"></small>
 					</div>
 					
 					<div class="mb-3">
@@ -66,13 +67,22 @@
 						    <select id="employee" th:field="*{order.customerNumber.employee}">
 						    	<option th:each="emp: ${employees}" th:value="${emp.employeeNumber}" th:text="${emp.lastName}" th:selected="false">
 						    </select>
+						    <small class="form-text text-danger" th:if="${#fields.hasErrors('order.customerNumber.employee')}" th:errors="*{order.customerNumber.employee}"></small>
 					</div>
 					<!-- Nuevo del Order Detail -->
 					<div class="mb-3">
-						  <label for="products" class="form-label">Productos</label>
-						    <select id="products" th:field="*{orderDetail.orderId.productCode}">
-						    	<option th:each="prods: ${products}" th:value="${prods.productCode}" th:text="${prods.productName}" th:selected="false">
-						    </select>
+					
+					  <ul>
+                               <li th:each="prods: ${products}"> 
+                                       <input type="checkbox" th:field="*{lista.products}" th:value="${prods.productCode}"> 
+                                       <label class="form-label" th:text="${prods.productName}"></label> 
+                               </li>
+                            </ul>
+<!-- 						  <label for="products" class="form-label">Productos</label> -->
+<!-- 						    <select id="products" th:field="*{orderDetail.orderId.productCode}"> -->
+<!-- 						    	<option th:each="prods: ${products}" th:value="${prods.productCode}" th:text="${prods.productName}" th:selected="false"> -->
+<!-- 						    </select> -->
+						    
 					</div>
 					
 					<div class="mb-3">
@@ -83,10 +93,7 @@
 					
 					
 					
-					<div class="mb-3">
-						<label for="orderLineNumber" class="form-label">Numero de Orden</label>
-						<input type="number" class="form-control" id="orderLineNumber" th:field="*{orderDetail.orderLineNumber}">
-					</div>
+					
 					<div class="container col-12">
 					<div class="form-group col-8">
 						 <h4>Termina tu compra completando el pago: </h4>

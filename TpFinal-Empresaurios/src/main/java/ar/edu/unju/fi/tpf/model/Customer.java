@@ -11,6 +11,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.validation.Valid;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotEmpty;
@@ -26,6 +27,7 @@ public class Customer {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name="cust_number")
+	@NotNull(message="Debes elegir un cliente")
 	private long customerNumber;
 	
 	@NotEmpty(message = "Debes ingresar name")
@@ -47,9 +49,9 @@ public class Customer {
 	@Column(name="cust_city")
 	private String city;
 	
-	@NotEmpty(message = "Debes ingresar state")
+
 	@Column(name="cust_state")
-	private String state;
+	private Boolean state;
 	
 	@NotNull(message = "Debes ingresar postal")
 	@Min(value=999, message="Error")
@@ -62,7 +64,6 @@ public class Customer {
 	private String country;
 	
 	//Relacion cliente a empleados- mucho a uno
-	
 	@ManyToOne(fetch=FetchType.LAZY)
     @JoinColumn(name = "emp_number")
 	private Employee employee;
@@ -79,20 +80,17 @@ public class Customer {
 		// TODO Auto-generated constructor stub
 	}
 
-	
 
 
 
-
-	public Customer(long customerNumber,
+	public Customer(@NotNull(message = "Debes elegir un cliente") long customerNumber,
 			@NotEmpty(message = "Debes ingresar name") @Size(min = 3, max = 50, message = "Minimo 3 y Maximo 50 caracteres") String customerName,
-			@NotNull(message = "Debes ingresar phone") @Min(value = 1000000, message = "Error") @Max(value = 1000000000, message = "Error") long phone,
+			@NotNull(message = "Debes ingresar phone") @Min(value = 3000000, message = "Error") @Max(value = 5999999, message = "Error") long phone,
 			@NotEmpty(message = "Debes ingresar Address") String addressLine,
-			@NotEmpty(message = "Debes ingresar city") String city,
-			@NotEmpty(message = "Debes ingresar state") String state,
-			@NotNull(message = "Debes ingresar postal") @Min(value = 1000, message = "Error") @Max(value = 10000, message = "Error") long postalCode,
-			@NotEmpty(message = "Debes ingresar country") String country, Employee employee,
-			@NotNull(message = "Debes ingresar creditLimit") @Min(value = 100, message = "Error") @Max(value = 10000000, message = "Error") long creditLimit) {
+			@NotEmpty(message = "Debes ingresar city") String city, Boolean state,
+			@NotNull(message = "Debes ingresar postal") @Min(value = 999, message = "Error") @Max(value = 9999, message = "Error") long postalCode,
+			@NotEmpty(message = "Debes ingresar country") String country, @Valid Employee employee,
+			@NotNull(message = "Debes ingresar creditLimit") @Min(value = 100000, message = "Error") @Max(value = 999999999, message = "Error") long creditLimit) {
 		super();
 		this.customerNumber = customerNumber;
 		this.customerName = customerName;
@@ -107,9 +105,30 @@ public class Customer {
 	}
 
 
-	
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	public Boolean getState() {
+		return state;
+	}
+
+
+	public void setState(Boolean state) {
+		this.state = state;
+	}
 
 
 	public long getCustomerNumber() {
@@ -196,28 +215,6 @@ public class Customer {
 	public void setCity(String city) {
 		this.city = city;
 	}
-
-
-
-
-
-
-	public String getState() {
-		return state;
-	}
-
-
-
-
-
-
-	public void setState(String state) {
-		this.state = state;
-	}
-
-
-
-
 
 
 	public long getPostalCode() {

@@ -8,6 +8,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 
 import org.springframework.stereotype.Component;
 
@@ -19,7 +20,7 @@ public class ProductLine {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name="prodL_productlineId")
-	//@NotNull(message = "Campo Obligatorio")
+	@NotNull(message = "Campo Obligatorio")
 	private long productLineId;
 	
 	@Column(name="prodL_textdescription")

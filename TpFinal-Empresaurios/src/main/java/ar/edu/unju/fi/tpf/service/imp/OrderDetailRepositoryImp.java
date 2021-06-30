@@ -31,7 +31,8 @@ public class OrderDetailRepositoryImp implements IOrderDetailService{
 	@Override
 	public OrderDetail buscarOrderDetail(Order orderNumber, Product productCode) {
 		// TODO Auto-generated method stub
-		return orderDetailRepository.findById(new OrderDetailId(productCode,orderNumber)).orElse(null);
+		return null;
+	//	return orderDetailRepository.findById(new OrderDetailId(productCode,orderNumber)).orElse(null);
 	}
 
 	@Override

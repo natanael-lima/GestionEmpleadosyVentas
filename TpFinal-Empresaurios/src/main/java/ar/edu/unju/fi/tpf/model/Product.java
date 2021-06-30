@@ -1,5 +1,7 @@
 package ar.edu.unju.fi.tpf.model;
 
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -8,6 +10,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.Valid;
 import javax.validation.constraints.Min;
@@ -31,7 +34,7 @@ public class Product {
 	private String productName;
 	
 	//Relacion producto a linea de producto - muchos a uno
-	//@Valid
+	@Valid
 	@ManyToOne(fetch=FetchType.LAZY)
 	@JoinColumn(name = "prodL_productLine")
 	private ProductLine productLine;
@@ -59,6 +62,7 @@ public class Product {
 	@Min(value=350000, message="Numero no valido")
 	private double buyPrice;
 	
+
 	
 	public Product() {
 		super();
