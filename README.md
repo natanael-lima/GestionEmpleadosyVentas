@@ -53,18 +53,16 @@ Accede a la aplicación en tu navegador en [http://localhost:4200](http://localh
 
 Puedes ver una vista previa del proyecto. ![Vista previa de la aplicación](https://i.postimg.cc/HjGmTZqm/project-gestioninventario.png)
 
-## Contribuciones
-
-Las contribuciones son bienvenidas. Si deseas contribuir a este proyecto, por favor realiza un fork del repositorio, crea una rama con tus cambios y envía un pull request.
-
-## Licencia
-
-Este proyecto está licenciado bajo la Licencia MIT. Para más detalles, consulta el archivo LICENSE.
-
 ## Contacto
 
 Si tienes alguna pregunta o sugerencia, no dudes en ponerte en contacto.
 
-- **Autor:** Natanael Lima
+## Realizado por
+
+- **Natanael Lima** [GitHub](https://github.com/natanael-lima)
+- **Raquel Virreyra** [GitHub](https://github.com/raquelvirreyra)
+- **Maximiliano Gaitan** [GitHub](https://github.com/maxi1103)
+- **Mateo Loto** [GitHub](https://github.com/LMateo42)
+- 
 - **Repositorio:** [GitHub](https://github.com/natanael-lima/sales-management-web-applications)
 
