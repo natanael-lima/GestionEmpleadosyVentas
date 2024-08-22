@@ -51,7 +51,7 @@ Accede a la aplicación en tu navegador en [http://localhost:4200](http://localh
 
 ## Vista Previa
 
-Puedes ver una vista previa del proyecto desplegado en [https://tu-url-de-previsualizacion](https://i.postimg.cc/HjGmTZqm/project-gestioninventario.png).
+Puedes ver una vista previa del proyecto desplegado en ![Vista previa de la aplicación](https://i.postimg.cc/HjGmTZqm/project-gestioninventario.png).
 
 ## Contribuciones
 
